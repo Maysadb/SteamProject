@@ -1219,4 +1219,105 @@
         } else if (place === 'buildings') {
             turbine.classList.add("spin-slow");
             bulb.classList.add("bulb-dim");
-            resultBox.inner
+            resultBox.innerHTML = "⚠️ LOW POWER! Buildings block airflow & create turbulence.";
+            mascotText.innerHTML = "Buildings block wind! Best solution is putting turbines on roof tops.";
+        } else if (place === 'indoor') {
+            turbine.classList.add("spin-stop");
+            resultBox.innerHTML = "❌ NO POWER! Zero natural wind movement inside closed rooms.";
+            mascotText.innerHTML = "Wind turbines need outdoor kinetic energy to turn!";
+        }
+    }
+
+    // Professional Chatbot Logic
+    function sendChipQuestion(questionText) {
+        appendUserMessage(questionText);
+        processAIResponse(questionText);
+    }
+
+    function sendCustomQuestion() {
+        const input = document.getElementById("userInput");
+        const query = input.value.trim();
+        if (query === "") return;
+        
+        appendUserMessage(query);
+        input.value = "";
+        processAIResponse(query);
+    }
+
+    function handleKeyPress(e) {
+        if (e.key === 'Enter') sendCustomQuestion();
+    }
+
+    function appendUserMessage(text) {
+        const chatBox = document.getElementById("chatBox");
+        chatBox.innerHTML += `
+            <div class="msg-row user">
+                <div class="chat-message user-msg">${text}</div>
+                <span class="msg-icon">🧑🏻</span>
+            </div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function appendBotMessage(text) {
+        const chatBox = document.getElementById("chatBox");
+        const mascotText = document.getElementById("mascotText");
+        
+        chatBox.innerHTML += `
+            <div class="msg-row bot">
+                <span class="msg-icon">🤖</span>
+                <div class="chat-message bot-msg">${text}</div>
+            </div>`;
+        mascotText.innerHTML = text;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function processAIResponse(query) {
+        const typing = document.getElementById("typingIndicator");
+        typing.style.display = "block";
+
+        const q = query.toLowerCase();
+        let answer = "";
+
+        if (q.includes("how") && (q.includes("work") || q.includes("light") || q.includes("bulb"))) {
+            answer = "Moving air pushes the turbine blades (kinetic energy) 🌀 -> spins the internal DC generator ⚙️ -> converts motion into electrical energy ⚡ -> lights up the LED bulb! 💡";
+        } else if (q.includes("stop") || q.includes("no wind") || q.includes("night") || q.includes("battery") || q.includes("store")) {
+            answer = "Smart Storage Solution: Excess electricity generated during windy periods is stored inside rechargeable batteries so the bulb stays lit even when the wind stops! 🔋";
+        } else if (q.includes("blade") || q.includes("3") || q.includes("three")) {
+            answer = "3 blades provide the ideal aerodynamic balance between stability, lightweight design, and maximum wind capture without creating too much drag! 🌀";
+        } else if (q.includes("saudi") || q.includes("arabia") || q.includes("dumat")) {
+            answer = "Yes! Saudi Arabia operates the Dumat Al Jandal Wind Farm, the largest in the Middle East, generating clean electricity for over 70,000 homes! 🇸🇦✨";
+        } else if (q.includes("important") || q.includes("benefit") || q.includes("eco") || q.includes("pollution")) {
+            answer = "Wind energy is 100% renewable, produces zero greenhouse gases, reduces reliance on fossil fuels, and keeps our air clean and healthy! 🌍💚";
+        } else if (q.includes("material") || q.includes("need") || q.includes("parts")) {
+            answer = "Materials used: Amazon wind turbine model kit, DC generator motor, copper connecting wires, LED bulb, multimeter, and an external desk fan for testing! 🧰";
+        } else if (q.includes("step") || q.includes("build") || q.includes("make")) {
+            answer = "Build Steps: 1️⃣ Assemble the turbine tower & blades. 2️⃣ Wire the DC motor to the LED terminal. 3️⃣ Test blade rotation & voltage using a fan! 🛠️";
+        } else if (q.includes("ai") || q.includes("artificial") || q.includes("smart") || q.includes("chatbot")) {
+            answer = "I used AI to create this interactive assistant and location simulator, helping users predict the best wind locations and get instant answers! 🧠💻";
+        } else if (q.includes("challenge") || q.includes("hard") || q.includes("problem")) {
+            answer = "The biggest challenge was balancing the blades and finding the exact fan distance to maintain a steady voltage so the LED doesn't flicker! ⚠️";
+        } else if (q.includes("scale") || q.includes("future") || q.includes("real")) {
+            answer = "For real-world scaling, we can add rechargeable battery banks and IoT wind-direction sensors that automatically turn the turbine toward the strongest breeze! 🚀";
+        } else if (q.includes("solar") || q.includes("sun")) {
+            answer = "Unlike solar panels that only work during sunny daytime hours, wind turbines can generate electricity 24/7—both day and night! ☀️🌙";
+        } else if (q.includes("volt") || q.includes("safe") || q.includes("power") || q.includes("electricity")) {
+            answer = "Our classroom model produces a safe, low-voltage DC output (around 3V to 5V)—completely safe for 4th-grade students to handle while lighting the LED! ⚡🛡️";
+        } else if (q.includes("storm") || q.includes("rain") || q.includes("weather") || q.includes("fast")) {
+            answer = "Real wind turbines are weatherproof and equipped with automatic braking systems that lock the blades during severe storms to prevent damage! ⛈️";
+        } else if (q.includes("cost") || q.includes("expensive") || q.includes("money") || q.includes("free")) {
+            answer = "While building turbines requires an initial investment, the fuel—the wind itself—is 100% free forever! 💸🌬️";
+        } else if (q.includes("yazan") || q.includes("who") || q.includes("teacher") || q.includes("modather")) {
+            answer = "This project 'Windy's Bulb' was proudly created by Yazan from Class 4Q under the supervision of Mr. Modather! 👦🏻🏆";
+        } else {
+            answer = "Great question! Wind turbines convert kinetic energy from moving air into clean electrical energy. Try tapping any suggested topic above to explore more details! 💡";
+        }
+
+        setTimeout(() => {
+            typing.style.display = "none";
+            appendBotMessage(answer);
+        }, 450);
+    }
+</script>
+
+</body>
+</html>
