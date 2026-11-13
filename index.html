@@ -191,47 +191,43 @@
             margin: 0;
         }
         
-        .header-right-group {
-            display: flex;
+        /* Professional Intro Replay Button */
+        .pro-intro-btn {
+            display: inline-flex;
             align-items: center;
             gap: 10px;
-            flex-wrap: wrap;
-        }
-        .replay-intro-btn {
-            background: #e8f5e9;
-            border: 2px solid #81c784;
-            color: #2e7d32;
-            padding: 8px 14px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: bold;
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
+            color: #ffffff;
+            border: none;
+            padding: 8px 18px 8px 10px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
             cursor: pointer;
-            transition: all 0.25s ease;
+            box-shadow: 0 4px 14px rgba(46, 125, 50, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .replay-intro-btn:hover {
-            background: #c8e6c9;
-            transform: translateY(-3px);
+        .pro-intro-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.45);
+            background: linear-gradient(135deg, #2e7d32, #00897b);
         }
-
-        /* School Logo */
-        .school-logo-box {
-            background: #ffffff;
-            border: 2px solid #81c784;
-            padding: 5px 10px;
-            border-radius: 12px;
+        .pro-intro-icon {
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            justify-content: center;
+            font-size: 12px;
             transition: transform 0.3s ease;
         }
-        .school-logo-box:hover {
-            transform: scale(1.03);
-        }
-        .school-logo-img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-            display: block;
+        .pro-intro-btn:hover .pro-intro-icon {
+            transform: rotate(360deg);
+            background: #ffb300;
+            color: #1b5e20;
         }
 
         /* Problem & Solution Card */
@@ -844,7 +840,6 @@
         @media (max-width: 600px) {
             .container { padding: 15px; }
             header { flex-direction: column; text-align: center; justify-content: center; }
-            .header-right-group { justify-content: center; width: 100%; }
             .options-grid { grid-template-columns: repeat(2, 1fr); }
             .steps-grid { grid-template-columns: repeat(2, 1fr); }
             .flashcard { min-height: 250px; }
@@ -881,19 +876,17 @@
 
 <!-- ================= MAIN WEBSITE ================= -->
 <div class="container">
-    <!-- Header with Logo & Real School Logo -->
+    <!-- Header with Logo & Professional Intro Button -->
     <header>
         <div class="logo-container">
             <span class="logo-icon">💡</span>
             <h1 class="logo-title">Windy's Bulb</h1>
         </div>
 
-        <div class="header-right-group">
-            <button class="replay-intro-btn" onclick="showWelcome()">👦🏻 Replay Intro</button>
-            <div class="school-logo-box">
-                <img src="001-two-languages-logo-on-the-top-option-3.avif" alt="Al Forsan International Schools Logo" class="school-logo-img">
-            </div>
-        </div>
+        <button class="pro-intro-btn" onclick="showWelcome()">
+            <span class="pro-intro-icon">▶</span>
+            <span>Watch Project Intro</span>
+        </button>
     </header>
 
     <!-- Problem & Solution Statement Section -->
@@ -967,7 +960,7 @@
             <div class="flashcard" id="judgeFlashcard" onclick="flipJudgeCard()">
                 <!-- Front Side (Question) -->
                 <div class="flashcard-face flashcard-front">
-                    <span class="fc-badge" id="fcCategory">Core Project</span>
+                    <span class="fc-badge" id="fcCategory">Core Mission</span>
                     <div class="fc-icon" id="fcIcon">🌍</div>
                     <h4 class="fc-question-text" id="fcQuestion">1. Why is this project important?</h4>
                     <span class="fc-flip-prompt">🔄 Tap Card to Reveal Answer</span>
@@ -1196,7 +1189,6 @@
         updateJudgeCard();
     }
 
-    // Initialize Judges Slider Dots on Load
     renderJudgeDots();
 
     // Single Large Gallery Slider Logic
