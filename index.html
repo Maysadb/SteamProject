@@ -560,4 +560,803 @@
         .judge-dot.active {
             background: #3f51b5;
             transform: scale(1.35);
-            box-shadow: 0 0 8px rgba(63, 81, 181, 0.5
+            box-shadow: 0 0 8px rgba(63, 81, 181, 0.5);
+        }
+
+        /* Steps Section */
+        .steps-section {
+            background: #f3e5f5;
+            border: 2px solid #ce93d8;
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .step-card {
+            background: #ffffff;
+            padding: 14px 12px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e1bee7;
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(171, 71, 188, 0.2);
+        }
+        .step-num {
+            background: #ab47bc;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 8px auto;
+            font-size: 13px;
+        }
+
+        /* Large Single Gallery Slider */
+        .gallery-section {
+            background: #e0f2f1;
+            border: 2px solid #80cbd4;
+            border-radius: 15px;
+            padding: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .single-slider-container {
+            width: 100%;
+            max-width: 630px;
+            margin: 15px auto 0 auto;
+            background: white;
+            padding: 12px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+        .large-slider-image {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid #b2dfdb;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .large-slider-image:hover {
+            transform: scale(1.01);
+        }
+        .large-slider-caption {
+            font-size: 14.5px;
+            font-weight: bold;
+            color: #00695c;
+            margin-top: 12px;
+        }
+        .slider-controls {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .slider-btn {
+            background: #00897b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13.5px;
+            font-weight: bold;
+            flex: 1;
+            max-width: 130px;
+            transition: all 0.2s ease;
+        }
+        .slider-btn:hover { background: #00695c; transform: translateY(-2px); }
+
+        /* ================= PROFESSIONAL AI CHATBOT UI ================= */
+        .chat-section {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 2px solid #90caf9;
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.15);
+            overflow: hidden;
+        }
+        .chat-header {
+            background: linear-gradient(135deg, #1565c0, #1e88e5);
+            color: white;
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .chat-header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .bot-avatar-circle {
+            width: 36px;
+            height: 36px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            animation: bounceBot 2s infinite;
+        }
+        @keyframes bounceBot {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        .online-badge {
+            font-size: 11px;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background: #69f0ae;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulseDot 1.5s infinite;
+        }
+        @keyframes pulseDot {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.3); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+        .chat-body-wrapper {
+            padding: 14px;
+            background: #f4f8fb;
+        }
+        .chat-box {
+            height: 220px;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 12px;
+            overflow-y: auto;
+            margin-bottom: 12px;
+            border: 1px solid #d0e3f5;
+            font-size: 13.5px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .msg-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 6px;
+            animation: msgPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes msgPop {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .msg-row.user {
+            justify-content: flex-end;
+        }
+        .msg-icon {
+            font-size: 16px;
+            margin-bottom: 2px;
+            flex-shrink: 0;
+        }
+        .chat-message {
+            padding: 10px 13px;
+            border-radius: 16px;
+            max-width: 82%;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+        .user-msg {
+            background: linear-gradient(135deg, #2e7d32, #43a047);
+            color: #ffffff;
+            border-bottom-right-radius: 4px;
+        }
+        .bot-msg {
+            background: #eef4fa;
+            color: #0d47a1;
+            border: 1px solid #d6e4f2;
+            border-bottom-left-radius: 4px;
+        }
+        .typing-indicator {
+            font-size: 12px;
+            color: #607d8b;
+            font-style: italic;
+            display: none;
+            margin-bottom: 8px;
+            padding-left: 6px;
+        }
+        .chips-label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #546e7a;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        .chat-chips {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .chat-chip {
+            background: #ffffff;
+            color: #1565c0;
+            border: 1px solid #90caf9;
+            padding: 6px 11px;
+            border-radius: 18px;
+            font-size: 11.5px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        .chat-chip:hover { background: #1976d2; color: white; transform: translateY(-2px); }
+        .input-group {
+            display: flex;
+            gap: 6px;
+            background: white;
+            padding: 5px;
+            border-radius: 30px;
+            border: 2px solid #90caf9;
+            align-items: center;
+        }
+        .chat-input {
+            flex-grow: 1;
+            min-width: 0;
+            padding: 8px 12px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            background: transparent;
+        }
+        .send-btn {
+            background: linear-gradient(135deg, #1565c0, #1e88e5);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+        .send-btn:hover { transform: scale(1.05); }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .container { padding: 15px; }
+            header { flex-direction: column; text-align: center; justify-content: center; }
+            .header-right-group { justify-content: center; width: 100%; }
+            .options-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps-grid { grid-template-columns: repeat(2, 1fr); }
+            .flashcard { min-height: 250px; }
+            .fc-question-text { font-size: 16px; }
+            .fc-answer-text { font-size: 13.5px; }
+            .large-slider-image { height: 230px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Reading Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- ================= ANIMATED CHARACTER WELCOME SCREEN ================= -->
+<div class="welcome-overlay" id="welcomeScreen">
+    <div class="welcome-card">
+        <div class="character-stage">
+            <span class="spinning-wind-badge">🌀</span>
+            <span class="cartoon-kid">👦🏻👋</span>
+            <span class="spinning-wind-badge">💡</span>
+        </div>
+        
+        <h2 style="color: #2e7d32; margin: 5px 0 15px 0; font-size: 22px;">Welcome to Windy's Bulb!</h2>
+        
+        <div class="welcome-speech">
+            "Hello! I am <strong>Yazan from class 4Q</strong>.<br>
+            I created this interactive wind energy project called <strong>'Windy's Bulb'</strong> under the supervision of my teacher, <strong>Mr. Modather</strong>, to explore clean energy and AI simulation!"
+        </div>
+
+        <button class="enter-btn" onclick="enterWebsite()">Explore Project 🚀</button>
+    </div>
+</div>
+
+<!-- ================= MAIN WEBSITE ================= -->
+<div class="container">
+    <!-- Header with Logo & Real School Logo -->
+    <header>
+        <div class="logo-container">
+            <span class="logo-icon">💡</span>
+            <h1 class="logo-title">Windy's Bulb</h1>
+        </div>
+
+        <div class="header-right-group">
+            <button class="replay-intro-btn" onclick="showWelcome()">👦🏻 Replay Intro</button>
+            <div class="school-logo-box">
+                <img src="001-two-languages-logo-on-the-top-option-3.avif" alt="Al Forsan International Schools Logo" class="school-logo-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- Problem & Solution Statement Section -->
+    <div class="problem-solution-card">
+        <div class="ps-title">🎯 Project Mission & Problem Solving</div>
+        <div class="ps-grid">
+            <div class="ps-box prob">
+                <strong style="color: #d84315;">❓ The Problem:</strong>
+                <p style="font-size: 12.5px; margin: 5px 0 0 0; color: #555; line-height: 1.4;">
+                    Wind speeds fluctuate constantly! People don't know where to build turbines or how to keep the bulb glowing brightly when wind becomes weak.
+                </p>
+            </div>
+            <div class="ps-box">
+                <strong style="color: #2e7d32;">✨ The Smart Solution:</strong>
+                <p style="font-size: 12.5px; margin: 5px 0 0 0; color: #555; line-height: 1.4;">
+                    <strong>Windy's Bulb</strong> combines a physical model with an interactive AI simulator to predict optimal locations and explain smart energy solutions!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mascot Assistant -->
+    <div class="mascot-box">
+        <div class="mascot-avatar">🎈</div>
+        <div class="speech-bubble" id="mascotText">
+            Welcome to <strong>Windy's Bulb</strong>! Select a location below to test how fast the turbine spins and see if the light bulb glows!
+        </div>
+    </div>
+
+    <!-- Live Graphic Visualizer -->
+    <div class="simulation-box">
+        <div class="sim-item">
+            <div class="sim-title">Wind Turbine</div>
+            <div class="turbine-graphic spin-stop" id="turbine">🌀</div>
+        </div>
+        <div class="sim-item">
+            <div class="sim-title">Energy</div>
+            <div style="font-size: 20px;">⚡➡️</div>
+        </div>
+        <div class="sim-item">
+            <div class="sim-title">Light Bulb</div>
+            <div class="bulb-graphic" id="bulb">💡</div>
+        </div>
+    </div>
+
+    <!-- Game Section -->
+    <div class="game-section">
+        <h3 style="margin-top:0; font-size: 16px;">📍 Test 5 Locations & Observe Energy:</h3>
+        
+        <div class="options-grid">
+            <button class="place-btn" onclick="checkPlace('mountain')">🏔️ Mountain</button>
+            <button class="place-btn" onclick="checkPlace('beach')">🏖️ Open Beach</button>
+            <button class="place-btn" onclick="checkPlace('farm')">🌳 Green Farm</button>
+            <button class="place-btn" onclick="checkPlace('buildings')">🏢 Tall Buildings</button>
+            <button class="place-btn" onclick="checkPlace('indoor')">🏠 Closed Room</button>
+        </div>
+
+        <div class="result-box" id="gameResult"></div>
+    </div>
+
+    <!-- ================= 3D INTERACTIVE JUDGES' Q&A SLIDER ================= -->
+    <div class="judge-slider-section">
+        <div class="judge-slider-header">
+            <h3 class="judge-slider-title">📋 Judges' Q&A Guide</h3>
+            <span class="question-counter-badge" id="judgeCounter">Question 1 of 7</span>
+        </div>
+        <p class="judge-slider-sub">Tap the card to flip it in 3D and reveal the answer, or use the arrows to browse!</p>
+
+        <!-- 3D Flip Card Stage -->
+        <div class="flashcard-stage">
+            <div class="flashcard" id="judgeFlashcard" onclick="flipJudgeCard()">
+                <!-- Front Side (Question) -->
+                <div class="flashcard-face flashcard-front">
+                    <span class="fc-badge" id="fcCategory">Core Project</span>
+                    <div class="fc-icon" id="fcIcon">🌍</div>
+                    <h4 class="fc-question-text" id="fcQuestion">1. Why is this project important?</h4>
+                    <span class="fc-flip-prompt">🔄 Tap Card to Reveal Answer</span>
+                </div>
+
+                <!-- Back Side (Answer) -->
+                <div class="flashcard-face flashcard-back">
+                    <span class="fc-badge">Official Answer</span>
+                    <p class="fc-answer-text" id="fcAnswer">
+                        Because wind energy is 100% clean, renewable, and produces zero pollution—helping protect our planet and reduce carbon emissions sustainably.
+                    </p>
+                    <span class="fc-flip-prompt">🔄 Tap to Flip Back</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Controls & Dots -->
+        <div class="judge-nav-controls">
+            <button class="judge-nav-btn" onclick="prevJudgeSlide()">❮ Previous</button>
+            <div class="judge-dots" id="judgeDots"></div>
+            <button class="judge-nav-btn" onclick="nextJudgeSlide()">Next ❯</button>
+        </div>
+    </div>
+
+    <!-- Steps Section -->
+    <div class="steps-section">
+        <h3 style="color: #6a1b9a; margin-top:0; font-size: 16px;">🛠️ How I Built My Model:</h3>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <strong style="font-size: 13px; color: #4a148c;">Turbine Model</strong>
+                <p style="font-size: 11.5px; color: #666; margin: 4px 0 0 0;">Ordered the wind turbine with pre-installed LED light from Amazon.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <strong style="font-size: 13px; color: #4a148c;">Wiring</strong>
+                <p style="font-size: 11.5px; color: #666; margin: 4px 0 0 0;">Connected motor wires to the light bulb terminal securely.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <strong style="font-size: 13px; color: #4a148c;">Testing</strong>
+                <p style="font-size: 11.5px; color: #666; margin: 4px 0 0 0;">Tested airflow using an external fan to spin blades.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">4</div>
+                <strong style="font-size: 13px; color: #4a148c;">AI Web App</strong>
+                <p style="font-size: 11.5px; color: #666; margin: 4px 0 0 0;">Built this interactive web page with AI Q&A Chatbot!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Large Single Gallery Slider Section -->
+    <div class="gallery-section">
+        <h3 style="color: #004d40; margin-top:0; font-size: 17px;">📸 Project Photo Gallery:</h3>
+        <p style="font-size: 12px; color: #555; margin: -5px 0 10px 0;">View of the physical model and testing steps!</p>
+        
+        <div class="single-slider-container">
+            <img id="largeSliderImg" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1000" alt="Large Gallery View" class="large-slider-image">
+            <div class="large-slider-caption" id="largeSliderCaption">1. Physical Turbine Setup</div>
+            <div class="slider-controls">
+                <button class="slider-btn" onclick="prevLargeImage()">❮ Prev</button>
+                <button class="slider-btn" onclick="nextLargeImage()">Next ❯</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= PROFESSIONAL AI CHATBOT SECTION ================= -->
+    <div class="chat-section">
+        <div class="chat-header">
+            <div class="chat-header-title">
+                <div class="bot-avatar-circle">🤖</div>
+                <div>
+                    <div style="font-weight: 800; font-size: 15px;">Windy AI Assistant</div>
+                    <div style="font-size: 11px; opacity: 0.9;">Ask anything about Yazan's Wind Project</div>
+                </div>
+            </div>
+            <div class="online-badge">
+                <span class="online-dot"></span> Online
+            </div>
+        </div>
+        
+        <div class="chat-body-wrapper">
+            <div class="chat-box" id="chatBox">
+                <div class="msg-row bot">
+                    <span class="msg-icon">🤖</span>
+                    <div class="chat-message bot-msg">
+                        Hello Judges & Visitors! 👋 I am <strong>Windy AI</strong>. Tap one of the quick questions below or type your own question in the box!
+                    </div>
+                </div>
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator">🤖 Windy AI is thinking...</div>
+
+            <div class="chips-label">💡 Suggested Questions (Tap to Ask):</div>
+            <div class="chat-chips">
+                <button class="chat-chip" onclick="sendChipQuestion('How does wind light the bulb?')">💡 How it works?</button>
+                <button class="chat-chip" onclick="sendChipQuestion('Why is this project important?')">🌍 Why is it important?</button>
+                <button class="chat-chip" onclick="sendChipQuestion('What materials did you use?')">🧰 Materials used</button>
+                <button class="chat-chip" onclick="sendChipQuestion('How did you use AI in this project?')">🧠 AI Integration</button>
+                <button class="chat-chip" onclick="sendChipQuestion('What if the wind stops or at night?')">🔋 No wind / Night</button>
+                <button class="chat-chip" onclick="sendChipQuestion('Why do turbines have 3 blades?')">🌀 Why 3 blades?</button>
+                <button class="chat-chip" onclick="sendChipQuestion('What was the biggest challenge?')">⚠️ Biggest Challenge</button>
+                <button class="chat-chip" onclick="sendChipQuestion('How can you scale this project?')">🚀 Future Scaling</button>
+                <button class="chat-chip" onclick="sendChipQuestion('Why wind instead of solar?')">☀️ Wind vs Solar</button>
+                <button class="chat-chip" onclick="sendChipQuestion('Is wind energy used in Saudi Arabia?')">🇸🇦 Saudi Arabia Wind</button>
+                <button class="chat-chip" onclick="sendChipQuestion('How much voltage does it produce?')">⚡ Voltage & Safety</button>
+                <button class="chat-chip" onclick="sendChipQuestion('How do turbines stay safe in storms?')">⛈️ Storm Protection</button>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="userInput" class="chat-input" placeholder="Type any question here..." onkeypress="handleKeyPress(event)">
+                <button class="send-btn" onclick="sendCustomQuestion()">Send ➤</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Reading Scroll Progress Bar
+    window.onscroll = function() {
+        let winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+    };
+
+    // Welcome Screen Functions
+    function enterWebsite() {
+        document.getElementById("welcomeScreen").classList.add("hidden");
+    }
+
+    function showWelcome() {
+        document.getElementById("welcomeScreen").classList.remove("hidden");
+    }
+
+    // ================= 3D INTERACTIVE JUDGES' SLIDER LOGIC =================
+    const judgeQuestionsData = [
+        {
+            category: "Core Mission",
+            icon: "🌍",
+            q: "1. Why is this project important?",
+            a: "Because wind energy is 100% clean, renewable, and produces zero pollution—helping protect our planet and reduce carbon emissions sustainably."
+        },
+        {
+            category: "Hardware & Parts",
+            icon: "🧰",
+            q: "2. What materials were needed to create this project?",
+            a: "An Amazon wind turbine model kit, a small DC generator motor, copper connecting wires, an LED light bulb, a digital multimeter, and an external desk fan for airflow simulation."
+        },
+        {
+            category: "Engineering Steps",
+            icon: "🛠️",
+            q: "3. What steps did I follow to build the model?",
+            a: "First, I unboxed and assembled the turbine tower and blades. Second, I connected the motor wires securely to the LED bulb terminal. Third, I tested airflow speeds using an external fan."
+        },
+        {
+            category: "AI Integration",
+            icon: "🤖",
+            q: "4. How did I use Artificial Intelligence (AI) in this project?",
+            a: "I integrated AI by building this interactive web platform featuring a smart AI Chatbot Assistant that answers judges' questions and simulates wind energy output across different environments!"
+        },
+        {
+            category: "Problem Solving",
+            icon: "⚠️",
+            q: "5. What was the biggest challenge you faced?",
+            a: "Balancing the propeller blades properly and adjusting the angle and distance from the external fan to ensure steady voltage output so the LED bulb glows without flickering."
+        },
+        {
+            category: "Future Vision",
+            icon: "🚀",
+            q: "6. How can you scale this project for real-life use?",
+            a: "We can scale it by adding rechargeable lithium batteries to store excess energy for calm days, and adding smart IoT wind sensors to automatically rotate the turbine toward the wind."
+        },
+        {
+            category: "Clean Tech Comparison",
+            icon: "☀️",
+            q: "7. Why choose wind energy instead of solar power?",
+            a: "Wind blows both day and night, whereas solar panels only generate electricity when the sun is shining. Combining wind and solar makes clean energy reliable 24/7!"
+        }
+    ];
+
+    let currentJudgeSlide = 0;
+
+    function renderJudgeDots() {
+        const dotsContainer = document.getElementById("judgeDots");
+        dotsContainer.innerHTML = "";
+        judgeQuestionsData.forEach((_, idx) => {
+            const dot = document.createElement("span");
+            dot.className = "judge-dot" + (idx === currentJudgeSlide ? " active" : "");
+            dot.onclick = () => goToJudgeSlide(idx);
+            dotsContainer.appendChild(dot);
+        });
+    }
+
+    function updateJudgeCard() {
+        const card = document.getElementById("judgeFlashcard");
+        card.classList.remove("flipped");
+
+        setTimeout(() => {
+            const item = judgeQuestionsData[currentJudgeSlide];
+            document.getElementById("judgeCounter").innerText = `Question ${currentJudgeSlide + 1} of ${judgeQuestionsData.length}`;
+            document.getElementById("fcCategory").innerText = item.category;
+            document.getElementById("fcIcon").innerText = item.icon;
+            document.getElementById("fcQuestion").innerText = item.q;
+            document.getElementById("fcAnswer").innerText = item.a;
+            renderJudgeDots();
+        }, 150);
+    }
+
+    function flipJudgeCard() {
+        document.getElementById("judgeFlashcard").classList.toggle("flipped");
+    }
+
+    function nextJudgeSlide() {
+        currentJudgeSlide = (currentJudgeSlide + 1) % judgeQuestionsData.length;
+        updateJudgeCard();
+    }
+
+    function prevJudgeSlide() {
+        currentJudgeSlide = (currentJudgeSlide - 1 + judgeQuestionsData.length) % judgeQuestionsData.length;
+        updateJudgeCard();
+    }
+
+    function goToJudgeSlide(index) {
+        currentJudgeSlide = index;
+        updateJudgeCard();
+    }
+
+    // Initialize Judges Slider Dots on Load
+    renderJudgeDots();
+
+    // Single Large Gallery Slider Logic
+    const galleryData = [
+        { url: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1000", caption: "1. Physical Turbine Setup" },
+        { url: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=1000", caption: "2. Airflow & Rotation Test" },
+        { url: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1000", caption: "3. LED Bulb Glowing Live" },
+        { url: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1000", caption: "4. Complete Circuit Assembly" }
+    ];
+    let galleryIndex = 0;
+
+    function updateLargeSlider() {
+        const img = document.getElementById("largeSliderImg");
+        const cap = document.getElementById("largeSliderCaption");
+        img.style.opacity = 0;
+        setTimeout(() => {
+            img.src = galleryData[galleryIndex].url;
+            cap.innerText = galleryData[galleryIndex].caption;
+            img.style.opacity = 1;
+        }, 180);
+    }
+
+    function nextLargeImage() {
+        galleryIndex = (galleryIndex + 1) % galleryData.length;
+        updateLargeSlider();
+    }
+
+    function prevLargeImage() {
+        galleryIndex = (galleryIndex - 1 + galleryData.length) % galleryData.length;
+        updateLargeSlider();
+    }
+
+    // Visual Simulator & Game Logic
+    function checkPlace(place) {
+        const resultBox = document.getElementById("gameResult");
+        const mascotText = document.getElementById("mascotText");
+        const turbine = document.getElementById("turbine");
+        const bulb = document.getElementById("bulb");
+
+        resultBox.style.display = "block";
+        turbine.className = "turbine-graphic ";
+        bulb.className = "bulb-graphic ";
+
+        if (place === 'mountain') {
+            turbine.classList.add("spin-fast");
+            bulb.classList.add("bulb-on");
+            resultBox.innerHTML = "✨ MAXIMUM POWER! High altitude provides high wind speeds. Bulb shines bright!";
+            mascotText.innerHTML = "Mountain Tops have constant fast wind. Best spot for wind energy!";
+        } else if (place === 'beach') {
+            turbine.classList.add("spin-fast");
+            bulb.classList.add("bulb-on");
+            resultBox.innerHTML = "🌊 GREAT POWER! Ocean breezes push turbine continuously!";
+            mascotText.innerHTML = "Coastal areas have strong sea breezes!";
+        } else if (place === 'farm') {
+            turbine.classList.add("spin-med");
+            bulb.classList.add("bulb-dim");
+            resultBox.innerHTML = "🌾 MODERATE POWER! Flat fields provide clean airflow.";
+            mascotText.innerHTML = "Farms are great open spaces for medium wind speeds.";
+        } else if (place === 'buildings') {
+            turbine.classList.add("spin-slow");
+            bulb.classList.add("bulb-dim");
+            resultBox.innerHTML = "⚠️ LOW POWER! Buildings block airflow & create turbulence.";
+            mascotText.innerHTML = "Buildings block wind! Best solution is putting turbines on roof tops.";
+        } else if (place === 'indoor') {
+            turbine.classList.add("spin-stop");
+            resultBox.innerHTML = "❌ NO POWER! Zero natural wind movement inside closed rooms.";
+            mascotText.innerHTML = "Wind turbines need outdoor kinetic energy to turn!";
+        }
+    }
+
+    // Professional Chatbot Logic
+    function sendChipQuestion(questionText) {
+        appendUserMessage(questionText);
+        processAIResponse(questionText);
+    }
+
+    function sendCustomQuestion() {
+        const input = document.getElementById("userInput");
+        const query = input.value.trim();
+        if (query === "") return;
+        
+        appendUserMessage(query);
+        input.value = "";
+        processAIResponse(query);
+    }
+
+    function handleKeyPress(e) {
+        if (e.key === 'Enter') sendCustomQuestion();
+    }
+
+    function appendUserMessage(text) {
+        const chatBox = document.getElementById("chatBox");
+        chatBox.innerHTML += `
+            <div class="msg-row user">
+                <div class="chat-message user-msg">${text}</div>
+                <span class="msg-icon">🧑🏻</span>
+            </div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function appendBotMessage(text) {
+        const chatBox = document.getElementById("chatBox");
+        const mascotText = document.getElementById("mascotText");
+        
+        chatBox.innerHTML += `
+            <div class="msg-row bot">
+                <span class="msg-icon">🤖</span>
+                <div class="chat-message bot-msg">${text}</div>
+            </div>`;
+        mascotText.innerHTML = text;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function processAIResponse(query) {
+        const typing = document.getElementById("typingIndicator");
+        typing.style.display = "block";
+
+        const q = query.toLowerCase();
+        let answer = "";
+
+        if (q.includes("how") && (q.includes("work") || q.includes("light") || q.includes("bulb"))) {
+            answer = "Moving air pushes the turbine blades (kinetic energy) 🌀 -> spins the internal DC generator ⚙️ -> converts motion into electrical energy ⚡ -> lights up the LED bulb! 💡";
+        } else if (q.includes("stop") || q.includes("no wind") || q.includes("night") || q.includes("battery") || q.includes("store")) {
+            answer = "Smart Storage Solution: Excess electricity generated during windy periods is stored inside rechargeable batteries so the bulb stays lit even when the wind stops! 🔋";
+        } else if (q.includes("blade") || q.includes("3") || q.includes("three")) {
+            answer = "3 blades provide the ideal aerodynamic balance between stability, lightweight design, and maximum wind capture without creating too much drag! 🌀";
+        } else if (q.includes("saudi") || q.includes("arabia") || q.includes("dumat")) {
+            answer = "Yes! Saudi Arabia operates the Dumat Al Jandal Wind Farm, the largest in the Middle East, generating clean electricity for over 70,000 homes! 🇸🇦✨";
+        } else if (q.includes("important") || q.includes("benefit") || q.includes("eco") || q.includes("pollution")) {
+            answer = "Wind energy is 100% renewable, produces zero greenhouse gases, reduces reliance on fossil fuels, and keeps our air clean and healthy! 🌍💚";
+        } else if (q.includes("material") || q.includes("need") || q.includes("parts")) {
+            answer = "Materials used: Amazon wind turbine model kit, DC generator motor, copper connecting wires, LED bulb, multimeter, and an external desk fan for testing! 🧰";
+        } else if (q.includes("step") || q.includes("build") || q.includes("make")) {
+            answer = "Build Steps: 1️⃣ Assemble the turbine tower & blades. 2️⃣ Wire the DC motor to the LED terminal. 3️⃣ Test blade rotation & voltage using a fan! 🛠️";
+        } else if (q.includes("ai") || q.includes("artificial") || q.includes("smart") || q.includes("chatbot")) {
+            answer = "I used AI to create this interactive assistant and location simulator, helping users predict the best wind locations and get instant answers! 🧠💻";
+        } else if (q.includes("challenge") || q.includes("hard") || q.includes("problem")) {
+            answer = "The biggest challenge was balancing the blades and finding the exact fan distance to maintain a steady voltage so the LED doesn't flicker! ⚠️";
+        } else if (q.includes("scale") || q.includes("future") || q.includes("real")) {
+            answer = "For real-world scaling, we can add rechargeable battery banks and IoT wind-direction sensors that automatically turn the turbine toward the strongest breeze! 🚀";
+        } else if (q.includes("solar") || q.includes("sun")) {
+            answer = "Unlike solar panels that only work during sunny daytime hours, wind turbines can generate electricity 24/7—both day and night! ☀️🌙";
+        } else if (q.includes("volt") || q.includes("safe") || q.includes("power") || q.includes("electricity")) {
+            answer = "Our classroom model produces a safe, low-voltage DC output (around 3V to 5V)—completely safe for 4th-grade students to handle while lighting the LED! ⚡🛡️";
+        } else if (q.includes("storm") || q.includes("rain") || q.includes("weather") || q.includes("fast")) {
+            answer = "Real wind turbines are weatherproof and equipped with automatic braking systems that lock the blades during severe storms to prevent damage! ⛈️";
+        } else if (q.includes("cost") || q.includes("expensive") || q.includes("money") || q.includes("free")) {
+            answer = "While building turbines requires an initial investment, the fuel—the wind itself—is 100% free forever! 💸🌬️";
+        } else if (q.includes("yazan") || q.includes("who") || q.includes("teacher") || q.includes("modather")) {
+            answer = "This project 'Windy's Bulb' was proudly created by Yazan from Class 4Q under the supervision of Mr. Modather! 👦🏻🏆";
+        } else {
+            answer = "Great question! Wind turbines convert kinetic energy from moving air into clean electrical energy. Try tapping any suggested topic above to explore more details! 💡";
+        }
+
+        setTimeout(() => {
+            typing.style.display = "none";
+            appendBotMessage(answer);
+        }, 450);
+    }
+</script>
+
+</body>
+</html>
