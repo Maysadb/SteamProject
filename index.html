@@ -36,7 +36,7 @@
             transition: width 0.1s ease;
         }
 
-        /* ================= INTERACTIVE FULL-BODY CHARACTER WELCOME SCREEN ================= */
+        /* ================= WELCOME SPLASH SCREEN ================= */
         .welcome-overlay {
             position: fixed;
             top: 0;
@@ -75,7 +75,6 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Full Body Character Animated Stage */
         .full-body-avatar-stage {
             position: relative;
             margin: 0 auto 15px auto;
@@ -129,8 +128,6 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-
-        /* Interactive Speech Bubble with Project Info */
         .welcome-speech {
             background: #f4fcf4;
             border: 2px solid #a5d6a7;
@@ -144,9 +141,7 @@
             position: relative;
             box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
         }
-        .welcome-speech strong {
-            color: #2e7d32;
-        }
+        .welcome-speech strong { color: #2e7d32; }
         .speech-highlights {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -165,7 +160,6 @@
             align-items: center;
             gap: 6px;
         }
-
         .enter-btn {
             background: linear-gradient(135deg, #ffb300, #fb8c00);
             color: #ffffff;
@@ -185,7 +179,7 @@
             box-shadow: 0 12px 25px rgba(251, 140, 0, 0.6);
         }
 
-        /* ================= MAIN WEBSITE CONTAINER ================= */
+        /* ================= MAIN CONTAINER ================= */
         .container {
             max-width: 950px;
             width: 100%;
@@ -201,7 +195,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Top Navigation Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -223,62 +216,46 @@
             box-shadow: 0 4px 12px rgba(212, 225, 87, 0.3);
             transition: all 0.3s ease;
         }
-        .logo-container:hover {
-            transform: scale(1.05) rotate(-1deg);
-        }
-        .logo-icon {
-            font-size: 30px;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-        .logo-title {
-            color: #2e7d32;
-            font-size: 24px;
-            font-weight: 800;
-            margin: 0;
-        }
+        .logo-container:hover { transform: scale(1.05) rotate(-1deg); }
+        .logo-icon { font-size: 30px; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        .logo-title { color: #2e7d32; font-size: 24px; font-weight: 800; margin: 0; }
         
-        /* Professional Intro Replay Button */
+        .header-controls-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
         .pro-intro-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: linear-gradient(135deg, #1b5e20, #2e7d32);
             color: #ffffff;
             border: none;
-            padding: 8px 18px 8px 10px;
+            padding: 8px 16px;
             border-radius: 50px;
             font-size: 13px;
             font-weight: 700;
-            letter-spacing: 0.3px;
             cursor: pointer;
             box-shadow: 0 4px 14px rgba(46, 125, 50, 0.3);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
         }
-        .pro-intro-btn:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.45);
-            background: linear-gradient(135deg, #2e7d32, #00897b);
+        .pro-intro-btn:hover { transform: translateY(-2px); background: linear-gradient(135deg, #2e7d32, #00897b); }
+        
+        .audio-toggle-btn {
+            background: #e8f5e9;
+            border: 2px solid #81c784;
+            color: #2e7d32;
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-size: 12.5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
-        .pro-intro-icon {
-            width: 28px;
-            height: 28px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            transition: transform 0.3s ease;
-        }
-        .pro-intro-btn:hover .pro-intro-icon {
-            transform: rotate(360deg);
-            background: #ffb300;
-            color: #1b5e20;
-        }
+        .audio-toggle-btn:hover { background: #c8e6c9; }
 
         /* Problem & Solution Card */
         .problem-solution-card {
@@ -287,39 +264,13 @@
             border-radius: 15px;
             padding: 15px 18px;
             margin-bottom: 20px;
-            transition: all 0.3s ease;
         }
-        .problem-solution-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 22px rgba(76, 175, 80, 0.18);
-        }
-        .ps-title {
-            color: #1b5e20;
-            font-size: 17px;
-            font-weight: 700;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-        .ps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 12px;
-        }
-        .ps-box {
-            background: #ffffff;
-            padding: 12px 15px;
-            border-radius: 10px;
-            border-left: 5px solid #4caf50;
-            transition: transform 0.25s ease;
-        }
-        .ps-box:hover {
-            transform: translateX(5px);
-        }
-        .ps-box.prob {
-            border-left-color: #ff9800;
-        }
+        .ps-title { color: #1b5e20; font-size: 17px; font-weight: 700; margin-top: 0; margin-bottom: 10px; }
+        .ps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+        .ps-box { background: #ffffff; padding: 12px 15px; border-radius: 10px; border-left: 5px solid #4caf50; }
+        .ps-box.prob { border-left-color: #ff9800; }
 
-        /* Mascot Section */
+        /* Mascot Assistant */
         .mascot-box {
             display: flex;
             align-items: center;
@@ -329,105 +280,140 @@
             margin-bottom: 20px;
             border: 2px solid #c8e6c9;
             gap: 12px;
-            transition: transform 0.3s ease;
         }
-        .mascot-box:hover {
-            transform: scale(1.01);
-        }
-        .mascot-avatar {
-            font-size: 38px;
-            flex-shrink: 0;
-            animation: floatBalloon 2.5s ease-in-out infinite alternate;
-        }
-        @keyframes floatBalloon {
-            0% { transform: translateY(0px) rotate(-4deg); }
-            100% { transform: translateY(-7px) rotate(4deg); }
-        }
-        .speech-bubble {
-            background: #ffffff;
-            padding: 10px 14px;
-            border-radius: 12px;
-            font-size: 14px;
-            color: #2c3e50;
-            flex-grow: 1;
-            border: 1px solid #e0e0e0;
-            line-height: 1.4;
-        }
+        .mascot-avatar { font-size: 38px; flex-shrink: 0; animation: floatBalloon 2.5s ease-in-out infinite alternate; }
+        @keyframes floatBalloon { 0% { transform: translateY(0px) rotate(-4deg); } 100% { transform: translateY(-7px) rotate(4deg); } }
+        .speech-bubble { background: #ffffff; padding: 10px 14px; border-radius: 12px; font-size: 14px; color: #2c3e50; flex-grow: 1; border: 1px solid #e0e0e0; line-height: 1.4; }
 
-        /* Live Visualizer */
-        .simulation-box {
+        /* ================= ADVANCED LIVE TELEMETRY & SIMULATOR ================= */
+        .advanced-simulator-section {
+            background: #f8f9fa;
+            border: 2px solid #cfd8dc;
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        }
+        .sim-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .sim-header-title { color: #37474f; font-size: 18px; font-weight: 800; margin: 0; }
+        
+        /* Live Gauges Telemetry Dashboard */
+        .telemetry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .tele-card {
+            background: #ffffff;
+            border: 1.5px solid #b0bec5;
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        .tele-label { font-size: 11px; font-weight: 700; color: #78909c; text-transform: uppercase; margin-bottom: 4px; }
+        .tele-value { font-size: 18px; font-weight: 800; color: #263238; }
+
+        /* Interactive Wind Speed Slider & Battery Status */
+        .wind-slider-control-box {
+            background: #ffffff;
+            border: 2px solid #90caf9;
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 16px;
+        }
+        .slider-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #0d47a1;
+            margin-bottom: 8px;
+        }
+        .custom-wind-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #e0e0e0;
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+        .custom-wind-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #1976d2;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        .custom-wind-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+        /* Visual Graphic Stage (Turbine + Battery + Bulb) */
+        .visual-stage-box {
             display: flex;
             justify-content: space-around;
             align-items: center;
-            background: #fafafa;
-            padding: 16px 10px;
-            border-radius: 15px;
-            margin-bottom: 20px;
+            background: #ffffff;
+            padding: 16px;
+            border-radius: 14px;
             border: 2px solid #e0e0e0;
             gap: 8px;
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.03);
         }
-        .sim-item { text-align: center; }
-        .sim-title { font-size: 11px; font-weight: 700; color: #777; margin-bottom: 5px; text-transform: uppercase; }
-        .turbine-graphic { font-size: 42px; display: inline-block; }
-        .bulb-graphic { font-size: 42px; opacity: 0.3; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .stage-item { text-align: center; }
+        .stage-title { font-size: 11px; font-weight: 700; color: #777; margin-bottom: 5px; text-transform: uppercase; }
+        .turbine-graphic { font-size: 46px; display: inline-block; }
+        .bulb-graphic { font-size: 46px; opacity: 0.3; transition: all 0.4s ease; }
         .bulb-on { opacity: 1; filter: drop-shadow(0 0 16px #fbc02d); transform: scale(1.15); }
         .bulb-dim { opacity: 0.7; filter: drop-shadow(0 0 6px #fbc02d); transform: scale(1.05); }
 
-        .spin-fast { animation: spin 0.32s linear infinite; }
-        .spin-med { animation: spin 0.65s linear infinite; }
-        .spin-slow { animation: spin 1.3s linear infinite; }
+        .spin-fast { animation: spin 0.28s linear infinite; }
+        .spin-med { animation: spin 0.6s linear infinite; }
+        .spin-slow { animation: spin 1.2s linear infinite; }
         .spin-stop { animation: none; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* Game Section */
-        .game-section {
-            background: #fff8e1;
-            padding: 18px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border: 2px solid #ffe082;
-        }
-        .options-grid {
+        /* Preset Environments Buttons */
+        .preset-buttons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
-            gap: 10px;
-            margin-top: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+            gap: 8px;
+            margin-top: 14px;
         }
-        .place-btn {
+        .preset-btn {
             background: #ffb74d;
             border: none;
-            padding: 12px 8px;
+            padding: 10px 6px;
             border-radius: 10px;
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: bold;
             color: white;
             cursor: pointer;
             text-align: center;
-            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 10px rgba(255, 183, 77, 0.3);
+            transition: all 0.2s ease;
+            box-shadow: 0 3px 8px rgba(255, 183, 77, 0.3);
         }
-        .place-btn:hover {
-            background: #ffa726;
-            transform: translateY(-4px) scale(1.04);
-            box-shadow: 0 6px 16px rgba(255, 167, 38, 0.5);
-        }
-        .result-box {
+        .preset-btn:hover { background: #ffa726; transform: translateY(-2px); }
+        .sim-status-message {
             margin-top: 12px;
-            padding: 12px;
-            background: #ffffff;
+            padding: 10px;
+            background: #fff8e1;
             border-radius: 10px;
             text-align: center;
             font-weight: bold;
-            font-size: 13.5px;
+            font-size: 13px;
             color: #e65100;
-            display: none;
             border: 1px solid #ffe082;
-            animation: slideDown 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-12px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ================= 3D INTERACTIVE JUDGES' Q&A SLIDER ================= */
@@ -448,12 +434,7 @@
             gap: 10px;
             margin-bottom: 12px;
         }
-        .judge-slider-title {
-            color: #283593;
-            font-size: 18px;
-            font-weight: 800;
-            margin: 0;
-        }
+        .judge-slider-title { color: #283593; font-size: 18px; font-weight: 800; margin: 0; }
         .question-counter-badge {
             background: #3f51b5;
             color: #ffffff;
@@ -461,20 +442,10 @@
             border-radius: 20px;
             font-size: 12px;
             font-weight: 700;
-            box-shadow: 0 3px 8px rgba(63, 81, 181, 0.3);
         }
-        .judge-slider-sub {
-            font-size: 12.5px;
-            color: #5c6bc0;
-            margin: 0 0 18px 0;
-        }
+        .judge-slider-sub { font-size: 12.5px; color: #5c6bc0; margin: 0 0 18px 0; }
 
-        /* 3D Flashcard Stage */
-        .flashcard-stage {
-            perspective: 1200px;
-            max-width: 650px;
-            margin: 0 auto;
-        }
+        .flashcard-stage { perspective: 1200px; max-width: 650px; margin: 0 auto; }
         .flashcard {
             width: 100%;
             min-height: 220px;
@@ -483,15 +454,11 @@
             transition: transform 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
         }
-        .flashcard.flipped {
-            transform: rotateY(180deg);
-        }
+        .flashcard.flipped { transform: rotateY(180deg); }
         .flashcard-face {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             border-radius: 18px;
@@ -502,70 +469,18 @@
             align-items: center;
             box-shadow: 0 10px 25px rgba(26, 35, 126, 0.14);
         }
-        .flashcard-front {
-            background: #ffffff;
-            border: 3px solid #5c6bc0;
-            color: #1a237e;
-        }
-        .flashcard-back {
-            background: linear-gradient(135deg, #1b5e20, #00695c);
-            border: 3px solid #81c784;
-            color: #ffffff;
-            transform: rotateY(180deg);
-        }
-        .fc-badge {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 800;
-            padding: 4px 12px;
-            border-radius: 15px;
-            margin-bottom: 12px;
-        }
-        .flashcard-front .fc-badge {
-            background: #e8eaf6;
-            color: #3f51b5;
-        }
-        .flashcard-back .fc-badge {
-            background: rgba(255,255,255,0.2);
-            color: #d4e157;
-        }
-        .fc-icon {
-            font-size: 36px;
-            margin-bottom: 10px;
-            animation: floatBalloon 2s ease-in-out infinite alternate;
-        }
-        .fc-question-text {
-            font-size: 18px;
-            font-weight: 800;
-            line-height: 1.4;
-            margin: 0 0 14px 0;
-        }
-        .fc-answer-text {
-            font-size: 15px;
-            line-height: 1.6;
-            margin: 0 0 14px 0;
-            max-width: 92%;
-        }
-        .fc-flip-prompt {
-            font-size: 12px;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .flashcard-front .fc-flip-prompt {
-            background: #f5f5f5;
-            color: #3f51b5;
-        }
-        .flashcard-back .fc-flip-prompt {
-            background: rgba(255,255,255,0.18);
-            color: #ffffff;
-        }
+        .flashcard-front { background: #ffffff; border: 3px solid #5c6bc0; color: #1a237e; }
+        .flashcard-back { background: linear-gradient(135deg, #1b5e20, #00695c); border: 3px solid #81c784; color: #ffffff; transform: rotateY(180deg); }
+        .fc-badge { font-size: 11px; text-transform: uppercase; font-weight: 800; padding: 4px 12px; border-radius: 15px; margin-bottom: 12px; }
+        .flashcard-front .fc-badge { background: #e8eaf6; color: #3f51b5; }
+        .flashcard-back .fc-badge { background: rgba(255,255,255,0.2); color: #d4e157; }
+        .fc-icon { font-size: 36px; margin-bottom: 10px; }
+        .fc-question-text { font-size: 18px; font-weight: 800; line-height: 1.4; margin: 0 0 14px 0; }
+        .fc-answer-text { font-size: 15px; line-height: 1.6; margin: 0 0 14px 0; max-width: 92%; }
+        .fc-flip-prompt { font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px; display: inline-flex; align-items: center; gap: 6px; }
+        .flashcard-front .fc-flip-prompt { background: #f5f5f5; color: #3f51b5; }
+        .flashcard-back .fc-flip-prompt { background: rgba(255,255,255,0.18); color: #ffffff; }
 
-        /* Carousel Navigation Controls (Two Clean Side-by-Side Buttons) */
         .judge-nav-controls {
             display: flex;
             justify-content: center;
@@ -589,299 +504,74 @@
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(63, 81, 181, 0.3);
             transition: all 0.25s ease;
-            white-space: nowrap;
         }
-        .judge-nav-btn:hover {
-            background: #283593;
-            transform: translateY(-2px);
-        }
+        .judge-nav-btn:hover { background: #283593; transform: translateY(-2px); }
 
         /* Steps Section */
-        .steps-section {
-            background: #f3e5f5;
-            border: 2px solid #ce93d8;
-            border-radius: 15px;
-            padding: 18px;
-            margin-bottom: 20px;
-        }
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 10px;
-            margin-top: 12px;
-        }
-        .step-card {
-            background: #ffffff;
-            padding: 14px 12px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #e1bee7;
-            transition: all 0.3s ease;
-        }
-        .step-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 16px rgba(171, 71, 188, 0.2);
-        }
-        .step-num {
-            background: #ab47bc;
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin: 0 auto 8px auto;
-            font-size: 13px;
-        }
+        .steps-section { background: #f3e5f5; border: 2px solid #ce93d8; border-radius: 15px; padding: 18px; margin-bottom: 20px; }
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 12px; }
+        .step-card { background: #ffffff; padding: 14px 12px; border-radius: 12px; text-align: center; border: 1px solid #e1bee7; }
+        .step-num { background: #ab47bc; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; margin: 0 auto 8px auto; font-size: 13px; }
 
-        /* Large Single Gallery Slider */
-        .gallery-section {
-            background: #e0f2f1;
-            border: 2px solid #80cbd4;
-            border-radius: 15px;
-            padding: 18px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .single-slider-container {
-            width: 100%;
-            max-width: 630px;
-            margin: 15px auto 0 auto;
-            background: white;
-            padding: 12px;
-            border-radius: 15px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-        }
-        .large-slider-image {
-            width: 100%;
-            height: 380px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 2px solid #b2dfdb;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-        .large-slider-image:hover {
-            transform: scale(1.01);
-        }
-        .large-slider-caption {
-            font-size: 14.5px;
-            font-weight: bold;
-            color: #00695c;
-            margin-top: 12px;
-        }
-        .slider-controls {
-            margin-top: 12px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        .slider-btn {
-            background: #00897b;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 13.5px;
-            font-weight: bold;
-            flex: 1;
-            max-width: 130px;
-            transition: all 0.2s ease;
-        }
-        .slider-btn:hover { background: #00695c; transform: translateY(-2px); }
+        /* Gallery Section */
+        .gallery-section { background: #e0f2f1; border: 2px solid #80cbd4; border-radius: 15px; padding: 18px; margin-bottom: 20px; text-align: center; }
+        .single-slider-container { width: 100%; max-width: 630px; margin: 15px auto 0 auto; background: white; padding: 12px; border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+        .large-slider-image { width: 100%; height: 380px; object-fit: cover; border-radius: 12px; border: 2px solid #b2dfdb; display: block; }
+        .large-slider-caption { font-size: 14.5px; font-weight: bold; color: #00695c; margin-top: 12px; }
+        .slider-controls { margin-top: 12px; display: flex; justify-content: center; gap: 10px; }
+        .slider-btn { background: #00897b; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-size: 13.5px; font-weight: bold; flex: 1; max-width: 130px; }
+        .slider-btn:hover { background: #00695c; }
 
-        /* ================= PROFESSIONAL AI CHATBOT UI ================= */
-        .chat-section {
-            background: #ffffff;
-            border-radius: 18px;
-            border: 2px solid #90caf9;
-            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.15);
-            overflow: hidden;
-        }
-        .chat-header {
-            background: linear-gradient(135deg, #1565c0, #1e88e5);
-            color: white;
-            padding: 14px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .chat-header-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .bot-avatar-circle {
-            width: 36px;
-            height: 36px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-            animation: bounceBot 2s infinite;
-        }
-        @keyframes bounceBot {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
-        }
-        .online-badge {
-            font-size: 11px;
-            background: rgba(255,255,255,0.2);
-            padding: 4px 10px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .online-dot {
-            width: 8px;
-            height: 8px;
-            background: #69f0ae;
-            border-radius: 50%;
-            display: inline-block;
-            animation: pulseDot 1.5s infinite;
-        }
-        @keyframes pulseDot {
-            0% { transform: scale(0.95); opacity: 0.7; }
-            50% { transform: scale(1.3); opacity: 1; }
-            100% { transform: scale(0.95); opacity: 0.7; }
-        }
-        .chat-body-wrapper {
-            padding: 14px;
-            background: #f4f8fb;
-        }
-        .chat-box {
-            height: 220px;
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 12px;
-            overflow-y: auto;
-            margin-bottom: 12px;
-            border: 1px solid #d0e3f5;
-            font-size: 13.5px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .msg-row {
-            display: flex;
-            align-items: flex-end;
-            gap: 6px;
-            animation: msgPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes msgPop {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .msg-row.user {
-            justify-content: flex-end;
-        }
-        .msg-icon {
-            font-size: 16px;
-            margin-bottom: 2px;
-            flex-shrink: 0;
-        }
-        .chat-message {
-            padding: 10px 13px;
+        /* ================= PROFESSIONAL AI CHATBOT WITH SPEECH ================= */
+        .chat-section { background: #ffffff; border-radius: 18px; border: 2px solid #90caf9; box-shadow: 0 10px 30px rgba(33, 150, 243, 0.15); overflow: hidden; margin-bottom: 20px; }
+        .chat-header { background: linear-gradient(135deg, #1565c0, #1e88e5); color: white; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .chat-header-title { display: flex; align-items: center; gap: 10px; }
+        .bot-avatar-circle { width: 36px; height: 36px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+        .online-badge { font-size: 11px; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 5px; }
+        .online-dot { width: 8px; height: 8px; background: #69f0ae; border-radius: 50%; display: inline-block; }
+        .chat-body-wrapper { padding: 14px; background: #f4f8fb; }
+        .chat-box { height: 220px; background: #ffffff; border-radius: 12px; padding: 12px; overflow-y: auto; margin-bottom: 12px; border: 1px solid #d0e3f5; font-size: 13.5px; display: flex; flex-direction: column; gap: 10px; }
+        .msg-row { display: flex; align-items: flex-end; gap: 6px; }
+        .msg-row.user { justify-content: flex-end; }
+        .msg-icon { font-size: 16px; margin-bottom: 2px; flex-shrink: 0; }
+        .chat-message { padding: 10px 13px; border-radius: 16px; max-width: 82%; line-height: 1.4; word-wrap: break-word; }
+        .user-msg { background: linear-gradient(135deg, #2e7d32, #43a047); color: #ffffff; border-bottom-right-radius: 4px; }
+        .bot-msg { background: #eef4fa; color: #0d47a1; border: 1px solid #d6e4f2; border-bottom-left-radius: 4px; }
+        .typing-indicator { font-size: 12px; color: #607d8b; font-style: italic; display: none; margin-bottom: 8px; padding-left: 6px; }
+        .chips-label { font-size: 11px; font-weight: bold; color: #546e7a; margin-bottom: 6px; text-transform: uppercase; }
+        .chat-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+        .chat-chip { background: #ffffff; color: #1565c0; border: 1px solid #90caf9; padding: 6px 11px; border-radius: 18px; font-size: 11.5px; font-weight: 600; cursor: pointer; text-align: left; }
+        .chat-chip:hover { background: #1976d2; color: white; }
+        .input-group { display: flex; gap: 6px; background: white; padding: 5px; border-radius: 30px; border: 2px solid #90caf9; align-items: center; }
+        .chat-input { flex-grow: 1; min-width: 0; padding: 8px 12px; border: none; outline: none; font-size: 14px; background: transparent; }
+        .send-btn { background: linear-gradient(135deg, #1565c0, #1e88e5); color: white; border: none; padding: 10px 18px; border-radius: 25px; font-weight: bold; font-size: 13px; cursor: pointer; }
+
+        /* Rating & Feedback Section */
+        .feedback-section {
+            background: #e8f5e9;
+            border: 2px solid #81c784;
             border-radius: 16px;
-            max-width: 82%;
-            line-height: 1.4;
-            word-wrap: break-word;
+            padding: 16px;
+            text-align: center;
         }
-        .user-msg {
-            background: linear-gradient(135deg, #2e7d32, #43a047);
-            color: #ffffff;
-            border-bottom-right-radius: 4px;
-        }
-        .bot-msg {
-            background: #eef4fa;
-            color: #0d47a1;
-            border: 1px solid #d6e4f2;
-            border-bottom-left-radius: 4px;
-        }
-        .typing-indicator {
-            font-size: 12px;
-            color: #607d8b;
-            font-style: italic;
-            display: none;
-            margin-bottom: 8px;
-            padding-left: 6px;
-        }
-        .chips-label {
-            font-size: 11px;
-            font-weight: bold;
-            color: #546e7a;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-        }
-        .chat-chips {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
-        }
-        .chat-chip {
-            background: #ffffff;
-            color: #1565c0;
-            border: 1px solid #90caf9;
-            padding: 6px 11px;
-            border-radius: 18px;
-            font-size: 11.5px;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: left;
-            transition: all 0.2s ease;
-        }
-        .chat-chip:hover { background: #1976d2; color: white; transform: translateY(-2px); }
-        .input-group {
-            display: flex;
-            gap: 6px;
-            background: white;
-            padding: 5px;
-            border-radius: 30px;
-            border: 2px solid #90caf9;
-            align-items: center;
-        }
-        .chat-input {
-            flex-grow: 1;
-            min-width: 0;
-            padding: 8px 12px;
-            border: none;
-            outline: none;
-            font-size: 14px;
-            background: transparent;
-        }
-        .send-btn {
-            background: linear-gradient(135deg, #1565c0, #1e88e5);
+        .feedback-stars { font-size: 24px; cursor: pointer; margin: 8px 0; letter-spacing: 5px; }
+        .feedback-btn {
+            background: #2e7d32;
             color: white;
             border: none;
-            padding: 10px 18px;
-            border-radius: 25px;
+            padding: 8px 20px;
+            border-radius: 20px;
             font-weight: bold;
-            font-size: 13px;
             cursor: pointer;
-            flex-shrink: 0;
-            transition: transform 0.2s ease;
+            font-size: 13px;
         }
-        .send-btn:hover { transform: scale(1.05); }
 
-        /* Mobile Adjustments */
         @media (max-width: 600px) {
             .container { padding: 15px; }
             header { flex-direction: column; text-align: center; justify-content: center; }
             .options-grid { grid-template-columns: repeat(2, 1fr); }
             .steps-grid { grid-template-columns: repeat(2, 1fr); }
             .flashcard { min-height: 250px; }
-            .fc-question-text { font-size: 16px; }
-            .fc-answer-text { font-size: 13.5px; }
             .large-slider-image { height: 230px; }
             .judge-nav-controls { flex-wrap: nowrap; gap: 10px; }
             .judge-nav-btn { padding: 10px 12px; font-size: 13px; }
@@ -891,13 +581,12 @@
 </head>
 <body>
 
-<!-- Reading Progress Bar -->
+<!-- Reading Scroll Progress Bar -->
 <div class="progress-bar" id="progressBar"></div>
 
 <!-- ================= INTERACTIVE FULL-BODY CHARACTER WELCOME SCREEN ================= -->
 <div class="welcome-overlay" id="welcomeScreen">
     <div class="welcome-card">
-        <!-- Full Body Animated Character Stage -->
         <div class="full-body-avatar-stage">
             <span class="floating-badge-icon badge-1">🌀</span>
             <span class="boy-full-body">🙋🏻‍♂️</span>
@@ -907,14 +596,13 @@
         <h2 class="welcome-title">Welcome to Windy's Bulb!</h2>
         <div class="welcome-subtitle">Interactive Clean Energy Project</div>
         
-        <!-- Interactive Project Speech Bubble -->
         <div class="welcome-speech">
             Hello! I am <strong>Yazan from class 4Q</strong>. Under the supervision of my teacher <strong>Mr. Modather</strong>, I built this interactive project to explore wind energy and clean electricity! 
             
             <div class="speech-highlights">
-                <div class="speech-pill">⚡ 100% Clean Energy</div>
-                <div class="speech-pill">🤖 AI Assistant Included</div>
-                <div class="speech-pill">🏔️ Location Simulator</div>
+                <div class="speech-pill">⚡ Live Telemetry</div>
+                <div class="speech-pill">🤖 AI Voice Assistant</div>
+                <div class="speech-pill">🔋 Smart Battery Bank</div>
                 <div class="speech-pill">📋 Judges Q&A Guide</div>
             </div>
         </div>
@@ -925,20 +613,22 @@
 
 <!-- ================= MAIN WEBSITE ================= -->
 <div class="container">
-    <!-- Header with Logo & Professional Intro Button -->
+    <!-- Header -->
     <header>
         <div class="logo-container">
             <span class="logo-icon">💡</span>
             <h1 class="logo-title">Windy's Bulb</h1>
         </div>
 
-        <button class="pro-intro-btn" onclick="showWelcome()">
-            <span class="pro-intro-icon">▶</span>
-            <span>Watch Project Intro</span>
-        </button>
+        <div class="header-controls-group">
+            <button class="audio-toggle-btn" id="audioToggleBtn" onclick="toggleAudioFX()">🔊 Sound: ON</button>
+            <button class="pro-intro-btn" onclick="showWelcome()">
+                <span>▶ Watch Intro</span>
+            </button>
+        </div>
     </header>
 
-    <!-- Problem & Solution Statement Section -->
+    <!-- Problem & Solution Card -->
     <div class="problem-solution-card">
         <div class="ps-title">🎯 Project Mission & Problem Solving</div>
         <div class="ps-grid">
@@ -951,7 +641,7 @@
             <div class="ps-box">
                 <strong style="color: #2e7d32;">✨ The Smart Solution:</strong>
                 <p style="font-size: 12.5px; margin: 5px 0 0 0; color: #555; line-height: 1.4;">
-                    <strong>Windy's Bulb</strong> combines a physical model with an interactive AI simulator to predict optimal locations and explain smart energy solutions!
+                    <strong>Windy's Bulb</strong> combines a physical model with a digital twin simulator, featuring live telemetry and backup battery storage!
                 </p>
             </div>
         </div>
@@ -961,39 +651,78 @@
     <div class="mascot-box">
         <div class="mascot-avatar">🎈</div>
         <div class="speech-bubble" id="mascotText">
-            Welcome to <strong>Windy's Bulb</strong>! Select a location below to test how fast the turbine spins and see if the light bulb glows!
+            Welcome to <strong>Windy's Bulb</strong>! Adjust the wind slider or test different locations below to see live voltage and backup battery performance!
         </div>
     </div>
 
-    <!-- Live Graphic Visualizer -->
-    <div class="simulation-box">
-        <div class="sim-item">
-            <div class="sim-title">Wind Turbine</div>
-            <div class="turbine-graphic spin-stop" id="turbine">🌀</div>
-        </div>
-        <div class="sim-item">
-            <div class="sim-title">Energy</div>
-            <div style="font-size: 20px;">⚡➡️</div>
-        </div>
-        <div class="sim-item">
-            <div class="sim-title">Light Bulb</div>
-            <div class="bulb-graphic" id="bulb">💡</div>
-        </div>
-    </div>
-
-    <!-- Game Section -->
-    <div class="game-section">
-        <h3 style="margin-top:0; font-size: 16px;">📍 Test 5 Locations & Observe Energy:</h3>
-        
-        <div class="options-grid">
-            <button class="place-btn" onclick="checkPlace('mountain')">🏔️ Mountain</button>
-            <button class="place-btn" onclick="checkPlace('beach')">🏖️ Open Beach</button>
-            <button class="place-btn" onclick="checkPlace('farm')">🌳 Green Farm</button>
-            <button class="place-btn" onclick="checkPlace('buildings')">🏢 Tall Buildings</button>
-            <button class="place-btn" onclick="checkPlace('indoor')">🏠 Closed Room</button>
+    <!-- ================= ADVANCED LIVE TELEMETRY & SIMULATOR ================= -->
+    <div class="advanced-simulator-section">
+        <div class="sim-top-row">
+            <h3 class="sim-header-title">📊 Live Engineering Telemetry & Digital Twin</h3>
+            <span style="font-size: 12px; font-weight: 700; color: #0288d1; background: #e1f5fe; padding: 4px 10px; border-radius: 12px;">Real-time Simulation</span>
         </div>
 
-        <div class="result-box" id="gameResult"></div>
+        <!-- Live Telemetry Dashboard Cards -->
+        <div class="telemetry-grid">
+            <div class="tele-card">
+                <div class="tele-label">Wind Speed</div>
+                <div class="tele-value" id="teleSpeed">0 km/h</div>
+            </div>
+            <div class="tele-card">
+                <div class="tele-label">Voltage Output</div>
+                <div class="tele-value" id="teleVoltage">0.0 V</div>
+            </div>
+            <div class="tele-card">
+                <div class="tele-label">Power Generated</div>
+                <div class="tele-value" id="telePower">0.0 W</div>
+            </div>
+            <div class="tele-card">
+                <div class="tele-label">Backup Battery</div>
+                <div class="tele-value" id="teleBattery" style="color: #2e7d32;">100% (Full)</div>
+            </div>
+        </div>
+
+        <!-- Interactive Wind Speed Slider -->
+        <div class="wind-slider-control-box">
+            <div class="slider-label-row">
+                <span>🎚️ Manual Wind Speed Control:</span>
+                <span id="sliderSpeedVal" style="color: #1976d2;">0 km/h</span>
+            </div>
+            <input type="range" min="0" max="100" value="0" class="custom-wind-slider" id="windSlider" oninput="onWindSliderChange(this.value)">
+        </div>
+
+        <!-- Visual Stage (Turbine + Battery + Bulb) -->
+        <div class="visual-stage-box">
+            <div class="stage-item">
+                <div class="stage-title">Turbine</div>
+                <div class="turbine-graphic spin-stop" id="turbine">🌀</div>
+            </div>
+            <div class="stage-item">
+                <div class="stage-title">Power Flow</div>
+                <div style="font-size: 20px;">⚡➡️</div>
+            </div>
+            <div class="stage-item">
+                <div class="stage-title">Battery Bank</div>
+                <div style="font-size: 32px;" id="batteryIcon">🔋</div>
+            </div>
+            <div class="stage-item">
+                <div class="stage-title">Light Bulb</div>
+                <div class="bulb-graphic" id="bulb">💡</div>
+            </div>
+        </div>
+
+        <!-- Preset Environment Buttons -->
+        <div class="preset-buttons-grid">
+            <button class="preset-btn" onclick="setPresetEnvironment(85, 'mountain')">🏔️ Mountain (85km)</button>
+            <button class="preset-btn" onclick="setPresetEnvironment(65, 'beach')">🏖️ Beach (65km)</button>
+            <button class="preset-btn" onclick="setPresetEnvironment(40, 'farm')">🌾 Farm (40km)</button>
+            <button class="preset-btn" onclick="setPresetEnvironment(15, 'buildings')">🏢 City (15km)</button>
+            <button class="preset-btn" onclick="setPresetEnvironment(0, 'indoor')">🏠 Indoor (0km)</button>
+        </div>
+
+        <div class="sim-status-message" id="simStatusMsg">
+            System ready. Adjust slider or select environment to test wind generation & backup battery!
+        </div>
     </div>
 
     <!-- ================= 3D INTERACTIVE JUDGES' Q&A SLIDER ================= -->
@@ -1004,10 +733,8 @@
         </div>
         <p class="judge-slider-sub">Tap the card to flip it in 3D and reveal the answer, or use the buttons below to browse!</p>
 
-        <!-- 3D Flip Card Stage -->
         <div class="flashcard-stage">
             <div class="flashcard" id="judgeFlashcard" onclick="flipJudgeCard()">
-                <!-- Front Side (Question) -->
                 <div class="flashcard-face flashcard-front">
                     <span class="fc-badge" id="fcCategory">Core Mission</span>
                     <div class="fc-icon" id="fcIcon">🌍</div>
@@ -1015,7 +742,6 @@
                     <span class="fc-flip-prompt">🔄 Tap Card to Reveal Answer</span>
                 </div>
 
-                <!-- Back Side (Answer) -->
                 <div class="flashcard-face flashcard-back">
                     <span class="fc-badge">Official Answer</span>
                     <p class="fc-answer-text" id="fcAnswer">
@@ -1026,7 +752,6 @@
             </div>
         </div>
 
-        <!-- Two Clean Side-by-Side Navigation Buttons -->
         <div class="judge-nav-controls">
             <button class="judge-nav-btn" onclick="prevJudgeSlide()">❮ Previous</button>
             <button class="judge-nav-btn" onclick="nextJudgeSlide()">Next ❯</button>
@@ -1060,7 +785,7 @@
         </div>
     </div>
 
-    <!-- Large Single Gallery Slider Section -->
+    <!-- Gallery Section -->
     <div class="gallery-section">
         <h3 style="color: #004d40; margin-top:0; font-size: 17px;">📸 Project Photo Gallery:</h3>
         <p style="font-size: 12px; color: #555; margin: -5px 0 10px 0;">View of the physical model and testing steps!</p>
@@ -1075,14 +800,14 @@
         </div>
     </div>
 
-    <!-- ================= PROFESSIONAL AI CHATBOT SECTION ================= -->
+    <!-- ================= AI CHATBOT WITH VOICE ASSISTANT ================= -->
     <div class="chat-section">
         <div class="chat-header">
             <div class="chat-header-title">
                 <div class="bot-avatar-circle">🤖</div>
                 <div>
-                    <div style="font-weight: 800; font-size: 15px;">Windy AI Assistant</div>
-                    <div style="font-size: 11px; opacity: 0.9;">Ask anything about Yazan's Wind Project</div>
+                    <div style="font-weight: 800; font-size: 15px;">Windy AI Assistant (Voice Enabled)</div>
+                    <div style="font-size: 11px; opacity: 0.9;">Tap questions to read & hear the answer aloud!</div>
                 </div>
             </div>
             <div class="online-badge">
@@ -1095,14 +820,14 @@
                 <div class="msg-row bot">
                     <span class="msg-icon">🤖</span>
                     <div class="chat-message bot-msg">
-                        Hello Judges & Visitors! 👋 I am <strong>Windy AI</strong>. Tap one of the quick questions below or type your own question in the box!
+                        Hello Judges & Visitors! 👋 I am <strong>Windy AI</strong> with built-in voice assistance. Tap any question below to get started!
                     </div>
                 </div>
             </div>
 
             <div class="typing-indicator" id="typingIndicator">🤖 Windy AI is thinking...</div>
 
-            <div class="chips-label">💡 Suggested Questions (Tap to Ask):</div>
+            <div class="chips-label">💡 Suggested Questions (Tap to Ask & Hear):</div>
             <div class="chat-chips">
                 <button class="chat-chip" onclick="sendChipQuestion('How does wind light the bulb?')">💡 How it works?</button>
                 <button class="chat-chip" onclick="sendChipQuestion('Why is this project important?')">🌍 Why is it important?</button>
@@ -1110,12 +835,8 @@
                 <button class="chat-chip" onclick="sendChipQuestion('How did you use AI in this project?')">🧠 AI Integration</button>
                 <button class="chat-chip" onclick="sendChipQuestion('What if the wind stops or at night?')">🔋 No wind / Night</button>
                 <button class="chat-chip" onclick="sendChipQuestion('Why do turbines have 3 blades?')">🌀 Why 3 blades?</button>
-                <button class="chat-chip" onclick="sendChipQuestion('What was the biggest challenge?')">⚠️ Biggest Challenge</button>
-                <button class="chat-chip" onclick="sendChipQuestion('How can you scale this project?')">🚀 Future Scaling</button>
-                <button class="chat-chip" onclick="sendChipQuestion('Why wind instead of solar?')">☀️ Wind vs Solar</button>
                 <button class="chat-chip" onclick="sendChipQuestion('Is wind energy used in Saudi Arabia?')">🇸🇦 Saudi Arabia Wind</button>
                 <button class="chat-chip" onclick="sendChipQuestion('How much voltage does it produce?')">⚡ Voltage & Safety</button>
-                <button class="chat-chip" onclick="sendChipQuestion('How do turbines stay safe in storms?')">⛈️ Storm Protection</button>
             </div>
 
             <div class="input-group">
@@ -1123,6 +844,15 @@
                 <button class="send-btn" onclick="sendCustomQuestion()">Send ➤</button>
             </div>
         </div>
+    </div>
+
+    <!-- Judge Feedback Rating Section -->
+    <div class="feedback-section">
+        <h3 style="color: #1b5e20; margin-top: 0; font-size: 16px;">⭐ Judge Evaluation & Rating</h3>
+        <p style="font-size: 12.5px; color: #333; margin: 0 0 5px 0;">Rate Yazan's project performance:</p>
+        <div class="feedback-stars" id="feedbackStars" onclick="rateProject(5)">⭐⭐⭐⭐⭐</div>
+        <button class="feedback-btn" onclick="submitFeedback()">Submit Rating 🏆</button>
+        <div id="feedbackResult" style="margin-top: 8px; font-weight: bold; color: #1b5e20; font-size: 13px;"></div>
     </div>
 </div>
 
@@ -1138,13 +868,116 @@
     // Welcome Screen Functions
     function enterWebsite() {
         document.getElementById("welcomeScreen").classList.add("hidden");
+        playBeep(600, 0.1);
     }
 
     function showWelcome() {
         document.getElementById("welcomeScreen").classList.remove("hidden");
     }
 
-    // ================= 3D INTERACTIVE JUDGES' SLIDER LOGIC =================
+    // ================= AUDIO & SPEECH SYNTHESIS ENGINE =================
+    let soundEnabled = true;
+    function toggleAudioFX() {
+        soundEnabled = !soundEnabled;
+        document.getElementById("audioToggleBtn").innerText = soundEnabled ? "🔊 Sound: ON" : "🔇 Sound: OFF";
+    }
+
+    // Web Audio API Sound Effects (No external files needed)
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playBeep(frequency, duration) {
+        if (!soundEnabled) return;
+        try {
+            if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+            let osc = audioCtx.createOscillator();
+            let gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = frequency;
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        } catch(e) {}
+    }
+
+    // Text-to-Speech Voice Assistant
+    function speakText(text) {
+        if (!soundEnabled || !('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel();
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 1.0;
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // ================= ADVANCED TELEMETRY & SLIDER SIMULATOR =================
+    function onWindSliderChange(speedVal) {
+        updateSimulation(parseInt(speedVal), "Manual slider adjustment");
+        playBeep(200 + parseInt(speedVal) * 5, 0.05);
+    }
+
+    function setPresetEnvironment(speedVal, envType) {
+        document.getElementById("windSlider").value = speedVal;
+        let msg = "";
+        if (envType === 'mountain') msg = "🏔️ Mountain Top: High wind speeds! Maximum turbine generation & battery fully charged.";
+        else if (envType === 'beach') msg = "🏖️ Open Beach: Steady coastal breezes provide robust power output!";
+        else if (envType === 'farm') msg = "🌾 Green Farm: Moderate wind speeds yielding stable energy production.";
+        else if (envType === 'buildings') msg = "🏢 City Buildings: Wind turbulence & blocks reduce output. Rooftop placement recommended!";
+        else if (envType === 'indoor') msg = "🏠 Indoor Room: Zero natural wind! System automatically switches to Emergency Backup Battery Mode 🔋.";
+        
+        updateSimulation(speedVal, msg);
+        playBeep(400, 0.15);
+    }
+
+    function updateSimulation(speed, statusText) {
+        document.getElementById("sliderSpeedVal").innerText = speed + " km/h";
+        document.getElementById("teleSpeed").innerText = speed + " km/h";
+
+        let voltage = (speed * 0.05).toFixed(1);
+        let power = (speed * speed * 0.002).toFixed(1);
+        document.getElementById("teleVoltage").innerText = voltage + " V";
+        document.getElementById("telePower").innerText = power + " W";
+
+        let turbine = document.getElementById("turbine");
+        let bulb = document.getElementById("bulb");
+        let battery = document.getElementById("teleBattery");
+        let batteryIcon = document.getElementById("batteryIcon");
+        let statusMsg = document.getElementById("simStatusMsg");
+
+        statusMsg.innerText = statusText;
+        turbine.className = "turbine-graphic ";
+        bulb.className = "bulb-graphic ";
+
+        if (speed >= 70) {
+            turbine.classList.add("spin-fast");
+            bulb.classList.add("bulb-on");
+            battery.innerText = "100% (Charging)";
+            battery.style.color = "#2e7d32";
+            batteryIcon.innerText = "🔋⚡";
+        } else if (speed >= 35) {
+            turbine.classList.add("spin-med");
+            bulb.classList.add("bulb-on");
+            battery.innerText = "85% (Stable)";
+            battery.style.color = "#2e7d32";
+            batteryIcon.innerText = "🔋";
+        } else if (speed > 0) {
+            turbine.classList.add("spin-slow");
+            bulb.classList.add("bulb-dim");
+            battery.innerText = "50% (Discharging)";
+            battery.style.color = "#ef6c00";
+            batteryIcon.innerText = "🔋";
+        } else {
+            turbine.classList.add("spin-stop");
+            bulb.classList.add("bulb-on"); // Battery keeps bulb glowing!
+            battery.innerText = "15% (Backup Mode)";
+            battery.style.color = "#c62828";
+            batteryIcon.innerText = "🪫";
+            statusMsg.innerText = "🔋 Wind stopped! Smart Backup Battery engaged automatically to keep the bulb glowing!";
+        }
+    }
+
+    // ================= 3D JUDGES' Q&A SLIDER LOGIC =================
     const judgeQuestionsData = [
         {
             category: "Core Mission",
@@ -1168,7 +1001,7 @@
             category: "AI Integration",
             icon: "🤖",
             q: "4. How did I use Artificial Intelligence (AI) in this project?",
-            a: "I integrated AI by building this interactive web platform featuring a smart AI Chatbot Assistant that answers judges' questions and simulates wind energy output across different environments!"
+            a: "I integrated AI by building this interactive web platform featuring a smart AI Chatbot Assistant and live digital twin telemetry!"
         },
         {
             category: "Problem Solving",
@@ -1195,6 +1028,7 @@
     function updateJudgeCard() {
         const card = document.getElementById("judgeFlashcard");
         card.classList.remove("flipped");
+        playBeep(450, 0.08);
 
         setTimeout(() => {
             const item = judgeQuestionsData[currentJudgeSlide];
@@ -1208,6 +1042,7 @@
 
     function flipJudgeCard() {
         document.getElementById("judgeFlashcard").classList.toggle("flipped");
+        playBeep(500, 0.08);
     }
 
     function nextJudgeSlide() {
@@ -1220,7 +1055,7 @@
         updateJudgeCard();
     }
 
-    // Single Large Gallery Slider Logic
+    // Gallery Slider Logic
     const galleryData = [
         { url: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1000", caption: "1. Physical Turbine Setup" },
         { url: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=1000", caption: "2. Airflow & Rotation Test" },
@@ -1243,52 +1078,16 @@
     function nextLargeImage() {
         galleryIndex = (galleryIndex + 1) % galleryData.length;
         updateLargeSlider();
+        playBeep(550, 0.06);
     }
 
     function prevLargeImage() {
         galleryIndex = (galleryIndex - 1 + galleryData.length) % galleryData.length;
         updateLargeSlider();
+        playBeep(550, 0.06);
     }
 
-    // Visual Simulator & Game Logic
-    function checkPlace(place) {
-        const resultBox = document.getElementById("gameResult");
-        const mascotText = document.getElementById("mascotText");
-        const turbine = document.getElementById("turbine");
-        const bulb = document.getElementById("bulb");
-
-        resultBox.style.display = "block";
-        turbine.className = "turbine-graphic ";
-        bulb.className = "bulb-graphic ";
-
-        if (place === 'mountain') {
-            turbine.classList.add("spin-fast");
-            bulb.classList.add("bulb-on");
-            resultBox.innerHTML = "✨ MAXIMUM POWER! High altitude provides high wind speeds. Bulb shines bright!";
-            mascotText.innerHTML = "Mountain Tops have constant fast wind. Best spot for wind energy!";
-        } else if (place === 'beach') {
-            turbine.classList.add("spin-fast");
-            bulb.classList.add("bulb-on");
-            resultBox.innerHTML = "🌊 GREAT POWER! Ocean breezes push turbine continuously!";
-            mascotText.innerHTML = "Coastal areas have strong sea breezes!";
-        } else if (place === 'farm') {
-            turbine.classList.add("spin-med");
-            bulb.classList.add("bulb-dim");
-            resultBox.innerHTML = "🌾 MODERATE POWER! Flat fields provide clean airflow.";
-            mascotText.innerHTML = "Farms are great open spaces for medium wind speeds.";
-        } else if (place === 'buildings') {
-            turbine.classList.add("spin-slow");
-            bulb.classList.add("bulb-dim");
-            resultBox.innerHTML = "⚠️ LOW POWER! Buildings block airflow & create turbulence.";
-            mascotText.innerHTML = "Buildings block wind! Best solution is putting turbines on roof tops.";
-        } else if (place === 'indoor') {
-            turbine.classList.add("spin-stop");
-            resultBox.innerHTML = "❌ NO POWER! Zero natural wind movement inside closed rooms.";
-            mascotText.innerHTML = "Wind turbines need outdoor kinetic energy to turn!";
-        }
-    }
-
-    // Professional Chatbot Logic
+    // AI Chatbot & Voice Assistant Logic
     function sendChipQuestion(questionText) {
         appendUserMessage(questionText);
         processAIResponse(questionText);
@@ -1298,7 +1097,6 @@
         const input = document.getElementById("userInput");
         const query = input.value.trim();
         if (query === "") return;
-        
         appendUserMessage(query);
         input.value = "";
         processAIResponse(query);
@@ -1316,19 +1114,19 @@
                 <span class="msg-icon">🧑🏻</span>
             </div>`;
         chatBox.scrollTop = chatBox.scrollHeight;
+        playBeep(700, 0.05);
     }
 
     function appendBotMessage(text) {
         const chatBox = document.getElementById("chatBox");
-        const mascotText = document.getElementById("mascotText");
-        
         chatBox.innerHTML += `
             <div class="msg-row bot">
                 <span class="msg-icon">🤖</span>
                 <div class="chat-message bot-msg">${text}</div>
             </div>`;
-        mascotText.innerHTML = text;
         chatBox.scrollTop = chatBox.scrollHeight;
+        speakText(text); // Speaks answer aloud!
+        playBeep(400, 0.1);
     }
 
     function processAIResponse(query) {
@@ -1339,43 +1137,34 @@
         let answer = "";
 
         if (q.includes("how") && (q.includes("work") || q.includes("light") || q.includes("bulb"))) {
-            answer = "Moving air pushes the turbine blades (kinetic energy) 🌀 -> spins the internal DC generator ⚙️ -> converts motion into electrical energy ⚡ -> lights up the LED bulb! 💡";
+            answer = "Moving air pushes the turbine blades (kinetic energy) -> spins the internal DC generator -> converts motion into electrical energy -> lights up the LED bulb!";
         } else if (q.includes("stop") || q.includes("no wind") || q.includes("night") || q.includes("battery") || q.includes("store")) {
-            answer = "Smart Storage Solution: Excess electricity generated during windy periods is stored inside rechargeable batteries so the bulb stays lit even when the wind stops! 🔋";
+            answer = "Smart Storage Solution: Excess electricity generated during windy periods is stored inside rechargeable backup batteries so the bulb stays lit even when the wind stops!";
         } else if (q.includes("blade") || q.includes("3") || q.includes("three")) {
-            answer = "3 blades provide the ideal aerodynamic balance between stability, lightweight design, and maximum wind capture without creating too much drag! 🌀";
+            answer = "3 blades provide the ideal aerodynamic balance between stability, lightweight design, and maximum wind capture without creating too much drag!";
         } else if (q.includes("saudi") || q.includes("arabia") || q.includes("dumat")) {
-            answer = "Yes! Saudi Arabia operates the Dumat Al Jandal Wind Farm, the largest in the Middle East, generating clean electricity for over 70,000 homes! 🇸🇦✨";
+            answer = "Yes! Saudi Arabia operates the Dumat Al Jandal Wind Farm, the largest in the Middle East, generating clean electricity for over 70,000 homes!";
         } else if (q.includes("important") || q.includes("benefit") || q.includes("eco") || q.includes("pollution")) {
-            answer = "Wind energy is 100% renewable, produces zero greenhouse gases, reduces reliance on fossil fuels, and keeps our air clean and healthy! 🌍💚";
+            answer = "Wind energy is 100% renewable, produces zero greenhouse gases, reduces reliance on fossil fuels, and keeps our air clean and healthy!";
         } else if (q.includes("material") || q.includes("need") || q.includes("parts")) {
-            answer = "Materials used: Amazon wind turbine model kit, DC generator motor, copper connecting wires, LED bulb, multimeter, and an external desk fan for testing! 🧰";
-        } else if (q.includes("step") || q.includes("build") || q.includes("make")) {
-            answer = "Build Steps: 1️⃣ Assemble the turbine tower & blades. 2️⃣ Wire the DC motor to the LED terminal. 3️⃣ Test blade rotation & voltage using a fan! 🛠️";
+            answer = "Materials used: Amazon wind turbine model kit, DC generator motor, copper connecting wires, LED bulb, multimeter, and an external desk fan for testing!";
         } else if (q.includes("ai") || q.includes("artificial") || q.includes("smart") || q.includes("chatbot")) {
-            answer = "I used AI to create this interactive assistant and location simulator, helping users predict the best wind locations and get instant answers! 🧠💻";
-        } else if (q.includes("challenge") || q.includes("hard") || q.includes("problem")) {
-            answer = "The biggest challenge was balancing the blades and finding the exact fan distance to maintain a steady voltage so the LED doesn't flicker! ⚠️";
-        } else if (q.includes("scale") || q.includes("future") || q.includes("real")) {
-            answer = "For real-world scaling, we can add rechargeable battery banks and IoT wind-direction sensors that automatically turn the turbine toward the strongest breeze! 🚀";
-        } else if (q.includes("solar") || q.includes("sun")) {
-            answer = "Unlike solar panels that only work during sunny daytime hours, wind turbines can generate electricity 24/7—both day and night! ☀️🌙";
+            answer = "I used AI to create this interactive assistant and digital twin simulator, helping judges test wind performance instantly!";
         } else if (q.includes("volt") || q.includes("safe") || q.includes("power") || q.includes("electricity")) {
-            answer = "Our classroom model produces a safe, low-voltage DC output (around 3V to 5V)—completely safe for 4th-grade students to handle while lighting the LED! ⚡🛡️";
-        } else if (q.includes("storm") || q.includes("rain") || q.includes("weather") || q.includes("fast")) {
-            answer = "Real wind turbines are weatherproof and equipped with automatic braking systems that lock the blades during severe storms to prevent damage! ⛈️";
-        } else if (q.includes("cost") || q.includes("expensive") || q.includes("money") || q.includes("free")) {
-            answer = "While building turbines requires an initial investment, the fuel—the wind itself—is 100% free forever! 💸🌬️";
-        } else if (q.includes("yazan") || q.includes("who") || q.includes("teacher") || q.includes("modather")) {
-            answer = "This project 'Windy's Bulb' was proudly created by Yazan from Class 4Q under the supervision of Mr. Modather! 👦🏻🏆";
+            answer = "Our classroom model produces a safe, low-voltage DC output (around 3V to 5V)—completely safe for 4th-grade students to handle while lighting the LED!";
         } else {
-            answer = "Great question! Wind turbines convert kinetic energy from moving air into clean electrical energy. Try tapping any suggested topic above to explore more details! 💡";
+            answer = "Great question! Wind turbines convert kinetic energy from moving air into clean electrical energy. Try adjusting the wind slider above to see live telemetry!";
         }
 
         setTimeout(() => {
             typing.style.display = "none";
             appendBotMessage(answer);
         }, 450);
+    }
+
+    function submitFeedback() {
+        document.getElementById("feedbackResult").innerText = "🎉 Thank you! Rating submitted successfully for Yazan's project!";
+        playBeep(880, 0.2);
     }
 </script>
 
