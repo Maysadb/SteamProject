@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windy's Bulb - Project Story</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #e0f7fa, #e8f5e9, #f1f8e9); margin: 0; padding: 15px; color: #333; }
+        
+        .navbar {
+            max-width: 950px; margin: 0 auto 20px auto; background: #ffffff; padding: 12px 20px;
+            border-radius: 15px; display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); flex-wrap: wrap; gap: 10px;
+        }
+        .nav-brand { font-weight: 800; color: #2e7d32; font-size: 20px; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; gap: 15px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: #37474f; font-weight: 600; font-size: 13.5px; padding: 6px 12px; border-radius: 8px; transition: background 0.2s; }
+        .nav-links a:hover, .nav-links a.active { background: #e8f5e9; color: #2e7d32; }
+
+        .container { max-width: 950px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 20px; box-shadow: 0 12px 35px rgba(0,0,0,0.12); }
+        .story-card { background: #f1f8e9; border: 2px solid #a5d6a7; border-radius: 15px; padding: 18px; margin-bottom: 20px; }
+        .story-title { color: #1b5e20; font-size: 18px; font-weight: 800; margin-top: 0; margin-bottom: 10px; }
+        .story-text { font-size: 14px; color: #444; line-height: 1.6; margin: 0; }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html" class="nav-brand"><span>💡</span> Windy's Bulb</a>
+    <div class="nav-links">
+        <a href="index.html">Home & Simulator</a>
+        <a href="story.html" class="active">Project Story</a>
+        <a href="judges.html">Judges Q&A</a>
+        <a href="gallery.html">Gallery & Steps</a>
+    </div>
+</div>
+
+<div class="container">
+    <h2 style="color: #1b5e20; margin-top: 0;">📖 The Engineering Story Behind Windy's Bulb</h2>
+    <p style="font-size: 14px; color: #555;">How Yazan turned a classroom science concept into an advanced clean energy digital twin.</p>
+
+    <div class="story-card">
+        <h3 class="story-title">❓ 1. The Challenge (The Problem)</h3>
+        <p class="story-text">Wind is a phenomenal source of renewable energy, but it fluctuates constantly. On calm days or at night when wind slows down, traditional turbines stop generating power, causing connected lights to flicker or turn off completely.</p>
+    </div>
+
+    <div class="story-card" style="background: #e8f5e9;">
+        <h3 class="story-title">✨ 2. The Innovation (Our Solution)</h3>
+        <p class="story-text">We created <strong>Windy's Bulb</strong>. By combining a physical turbine model with an interactive digital twin web application, users can test wind speeds across different environments (mountains, beaches, cities) and observe how a smart backup battery system keeps the bulb glowing 24/7.</p>
+    </div>
+
+    <div class="story-card" style="background: #fff8e1; border-color: #ffe082;">
+        <h3 class="story-title">☀️ 3. Why Wind Power Instead of Solar?</h3>
+        <p class="story-text">While solar panels only operate during sunny daytime hours, wind can blow both day and night. Combining wind energy with intelligent battery storage ensures reliable, uninterrupted clean electricity around the clock!</p>
+    </div>
+</div>
+
+</body>
+</html>
 
