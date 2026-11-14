@@ -1,1 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windy's Bulb - Judges Q&A Guide</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #e0f7fa, #e8f5e9, #f1f8e9); margin: 0; padding: 15px; color: #333; }
+        
+        .navbar {
+            max-width: 950px; margin: 0 auto 20px auto; background: #ffffff; padding: 12px 20px;
+            border-radius: 15px; display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); flex-wrap: wrap; gap: 10px;
+        }
+        .nav-brand { font-weight: 800; color: #2e7d32; font-size: 20px; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; gap: 15px; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: #37474f; font-weight: 600; font-size: 13.5px; padding: 6px 12px; border-radius: 8px; transition: background 0.2s; }
+        .nav-links a:hover, .nav-links a.active { background: #e8f5e9; color: #2e7d32; }
+
+        .container { max-width: 950px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 20px; box-shadow: 0 12px 35px rgba(0,0,0,0.12); }
+        
+        .judge-section { background: linear-gradient(135deg, #e8eaf6, #ede7f6); border: 2px solid #9fa8da; border-radius: 18px; padding: 22px; text-align: center; }
+        .flashcard-stage { perspective: 1200px; max-width: 650px; margin: 15px auto; }
+        .flashcard { width: 100%; min-height: 220px; position: relative; transform-style: preserve-3d; transition: transform 0.6s; cursor: pointer; }
+        .flashcard.flipped { transform: rotateY(180deg); }
+        .fc-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .fc-front { background: white; border: 3px solid #5c6bc0; color: #1a237e; }
+        .fc-back { background: linear-gradient(135deg, #1b5e20, #00695c); border: 3px solid #81c784; color: white; transform: rotateY(180deg); }
+        
+        .nav-controls { display: flex; justify-content: center; gap: 12px; margin-top: 15px; }
+        .nav-btn { background: #3f51b5; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+        .nav-btn:hover { background: #283593; }
+
+        .feedback-box { margin-top: 25px; background: #e8f5e9; border: 2px solid #81c784; border-radius: 15px; padding: 16px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="index.html" class="nav-brand"><span>💡</span> Windy's Bulb</a>
+    <div class="nav-links">
+        <a href="index.html">Home & Simulator</a>
+        <a href="story.html">Project Story</a>
+        <a href="judges.html" class="active">Judges Q&A</a>
+        <a href="gallery.html">Gallery & Steps</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="judge-section">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h3 style="color: #283593; margin: 0;">📋 Judges' Q&A Guide</h3>
+            <span id="counter" style="background: #3f51b5; color: white; padding: 4px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">Question 1 of 5</span>
+        </div>
+        <p style="font-size: 13px; color: #5c6bc0; margin-bottom: 15px;">Tap card to flip in 3D and reveal the official answer!</p>
+
+        <div class="flashcard-stage">
+            <div class="flashcard" id="card" onclick="flipCard()">
+                <div class="fc-face fc-front">
+                    <div id="qCat" style="font-size: 11px; font-weight: bold; color: #3f51b5; text-transform: uppercase; margin-bottom: 8px;">Core Mission</div>
+                    <h4 id="qText" style="font-size: 17px; margin: 0 0 10px 0;">1. Why is this project important?</h4>
+                    <span style="font-size: 11.5px; background: #f5f5f5; padding: 4px 10px; border-radius: 12px; color: #3f51b5;">🔄 Tap to flip</span>
+                </div>
+                <div class="fc-face fc-back">
+                    <p id="aText" style="font-size: 14.5px; line-height: 1.5; margin: 0 0 10px 0;">Because wind energy is 100% clean, renewable, and produces zero pollution.</p>
+                    <span style="font-size: 11.5px; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 12px;">🔄 Tap to flip back</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-controls">
+            <button class="nav-btn" onclick="prevCard()">❮ Previous</button>
+            <button class="nav-btn" onclick="nextCard()">Next ❯</button>
+        </div>
+    </div>
+
+    <div class="feedback-box">
+        <h3 style="color: #1b5e20; margin-top: 0; font-size: 16px;">⭐ Judge Evaluation & Rating</h3>
+        <div style="font-size: 22px; margin: 8px 0; cursor: pointer;">⭐⭐⭐⭐⭐</div>
+        <button onclick="alert('Thank you! Rating submitted successfully.')" style="background: #2e7d32; color: white; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer;">Submit Rating 🏆</button>
+    </div>
+</div>
+
+<script>
+    const qaData = [
+        { cat: "Core Mission", q: "1. Why is this project important?", a: "Because wind energy is 100% clean, renewable, and produces zero pollution—helping protect our planet." },
+        { cat: "Hardware & Parts", q: "2. What materials were needed?", a: "An Amazon wind turbine model kit, a DC generator motor, copper wires, and an LED bulb." },
+        { cat: "Engineering Steps", q: "3. How was the model built?", a: "Assembled the turbine tower, connected the motor wires to the LED terminal, and tested airflow with a fan." },
+        { cat: "AI Integration", q: "4. How did you use AI?", a: "Built an interactive digital twin web app with live telemetry and voice assistance." },
+        { cat: "Future Vision", q: "5. How can you scale this project?", a: "By adding rechargeable lithium battery banks and IoT smart wind-tracking sensors." }
+    ];
+
+    let currentIdx = 0;
+
+    function updateCard() {
+        document.getElementById("card").classList.remove("flipped");
+        setTimeout(() => {
+            let item = qaData[currentIdx];
+            document.getElementById("counter").innerText = `Question ${currentIdx + 1} of ${qaData.length}`;
+            document.getElementById("qCat").innerText = item.cat;
+            document.getElementById("qText").innerText = item.q;
+            document.getElementById("aText").innerText = item.a;
+        }, 150);
+    }
+
+    function flipCard() { document.getElementById("card").classList.toggle("flipped"); }
+    function nextCard() { currentIdx = (currentIdx + 1) % qaData.length; updateCard(); }
+    function prevCard() { currentIdx = (currentIdx - 1 + qaData.length) % qaData.length; updateCard(); }
+</script>
+</body>
+</html>
 
