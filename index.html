@@ -2,187 +2,1454 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Windy's Bulb - Home & Digital Twin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Windy's Bulb | Next-Gen Clean Energy Digital Twin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: linear-gradient(135deg, #e0f7fa, #e8f5e9, #f1f8e9); margin: 0; padding: 15px; color: #333; }
-        
-        /* Cinematic Dark Intro */
-        .cinematic-intro {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #0a0f0d; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; z-index: 9999;
-            color: #fff; text-align: center; padding: 20px; transition: opacity 0.6s ease;
+        :root {
+            --bg-dark: #060913;
+            --bg-card: rgba(17, 24, 39, 0.65);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(16, 185, 129, 0.45);
+            --accent-emerald: #10b981;
+            --accent-cyan: #06b6d4;
+            --accent-amber: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
         }
-        .cinematic-intro.hidden { opacity: 0; pointer-events: none; }
-        .intro-logo { font-size: 64px; animation: pulseGlow 2s infinite alternate; }
-        @keyframes pulseGlow { from { transform: scale(1); filter: drop-shadow(0 0 10px #4caf50); } to { transform: scale(1.1); filter: drop-shadow(0 0 25px #81c784); } }
-        .intro-title { font-size: 28px; font-weight: 800; margin: 15px 0 5px 0; color: #a5d6a7; }
-        .intro-sub { font-size: 14px; color: #b0bec5; margin-bottom: 25px; }
-        .intro-enter-btn {
-            background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; border: none;
-            padding: 12px 30px; font-size: 16px; font-weight: bold; border-radius: 30px; cursor: pointer;
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4); transition: transform 0.2s;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
-        .intro-enter-btn:hover { transform: scale(1.05); }
 
-        /* Navbar */
-        .navbar {
-            max-width: 950px; margin: 0 auto 20px auto; background: #ffffff; padding: 12px 20px;
-            border-radius: 15px; display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08); flex-wrap: wrap; gap: 10px;
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            padding-bottom: 90px;
         }
-        .nav-brand { font-weight: 800; color: #2e7d32; font-size: 20px; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        .nav-links { display: flex; gap: 15px; flex-wrap: wrap; }
-        .nav-links a { text-decoration: none; color: #37474f; font-weight: 600; font-size: 13.5px; padding: 6px 12px; border-radius: 8px; transition: background 0.2s; }
-        .nav-links a:hover, .nav-links a.active { background: #e8f5e9; color: #2e7d32; }
 
-        /* Container */
-        .container { max-width: 950px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 20px; box-shadow: 0 12px 35px rgba(0,0,0,0.12); }
-        
-        /* Telemetry & Simulator */
-        .simulator-box { background: #f8f9fa; border: 2px solid #cfd8dc; border-radius: 16px; padding: 18px; margin-bottom: 20px; }
-        .telemetry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 15px; }
-        .tele-card { background: #ffffff; border: 1.5px solid #b0bec5; border-radius: 12px; padding: 10px; text-align: center; }
-        .tele-label { font-size: 11px; font-weight: 700; color: #78909c; text-transform: uppercase; }
-        .tele-value { font-size: 18px; font-weight: 800; color: #263238; }
+        /* Ambient Animated Grid Background */
+        .tech-grid-bg {
+            position: fixed;
+            inset: 0;
+            background-size: 45px 45px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+            z-index: -1;
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+        }
 
-        .slider-box { background: white; border: 2px solid #90caf9; border-radius: 14px; padding: 14px; margin-bottom: 15px; }
-        .custom-slider { width: 100%; height: 8px; border-radius: 5px; background: #e0e0e0; outline: none; -webkit-appearance: none; cursor: pointer; }
-        .custom-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #1976d2; cursor: pointer; }
+        /* ================= CINEMATIC LUXURY INTRO ================= */
+        .intro-screen {
+            position: fixed;
+            inset: 0;
+            background: #03050a;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            text-align: center;
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-        .visual-stage { display: flex; justify-content: space-around; align-items: center; background: white; padding: 15px; border-radius: 12px; border: 1px solid #e0e0e0; gap: 8px; }
-        .turbine { font-size: 42px; display: inline-block; }
-        .bulb { font-size: 42px; opacity: 0.3; transition: all 0.3s; }
-        .bulb-on { opacity: 1; filter: drop-shadow(0 0 12px #fbc02d); transform: scale(1.1); }
-        .spin-fast { animation: spin 0.3s linear infinite; }
-        .spin-med { animation: spin 0.6s linear infinite; }
-        .spin-slow { animation: spin 1.2s linear infinite; }
-        .spin-stop { animation: none; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .intro-screen.hidden {
+            opacity: 0;
+            transform: scale(1.06);
+            pointer-events: none;
+        }
 
-        .presets { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin-top: 12px; }
-        .preset-btn { background: #ffb74d; border: none; padding: 8px; border-radius: 8px; font-weight: bold; color: white; cursor: pointer; font-size: 12px; }
-        .preset-btn:hover { background: #ffa726; }
+        .turbine-core-stage {
+            position: relative;
+            width: 210px;
+            height: 210px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 28px;
+        }
 
-        .status-msg { margin-top: 12px; padding: 10px; background: #fff8e1; border-radius: 8px; font-weight: bold; font-size: 13px; color: #e65100; text-align: center; }
+        .orbit-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(16, 185, 129, 0.25);
+        }
+
+        .orbit-1 {
+            width: 205px;
+            height: 205px;
+            border-top: 2px solid var(--accent-cyan);
+            border-bottom: 2px solid transparent;
+            animation: spinCW 8s linear infinite;
+        }
+
+        .orbit-2 {
+            width: 165px;
+            height: 165px;
+            border-left: 2px solid var(--accent-emerald);
+            border-right: 2px solid transparent;
+            animation: spinCCW 5s linear infinite;
+        }
+
+        .orbit-glow {
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.35), transparent 70%);
+            border-radius: 50%;
+            animation: pulseCore 2.5s ease-in-out infinite alternate;
+        }
+
+        .hero-rotor-svg {
+            width: 120px;
+            height: 120px;
+            z-index: 2;
+            animation: spinCW 2.4s linear infinite;
+            filter: drop-shadow(0 0 18px rgba(16, 185, 129, 0.6));
+        }
+
+        @keyframes spinCW { 100% { transform: rotate(360deg); } }
+        @keyframes spinCCW { 100% { transform: rotate(-360deg); } }
+        @keyframes pulseCore {
+            0% { transform: scale(0.85); opacity: 0.6; }
+            100% { transform: scale(1.25); opacity: 1; }
+        }
+
+        .intro-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 999px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            color: var(--accent-emerald);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .intro-title {
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 20%, #a7f3d0 60%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .intro-meta {
+            color: var(--text-muted);
+            font-size: 14px;
+            max-width: 440px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .intro-meta strong {
+            color: #e2e8f0;
+        }
+
+        .luxury-btn {
+            position: relative;
+            background: linear-gradient(135deg, var(--accent-emerald), var(--accent-cyan));
+            color: #03050a;
+            font-weight: 800;
+            font-size: 15px;
+            padding: 15px 38px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px -5px rgba(16, 185, 129, 0.5);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .luxury-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 18px 40px -5px rgba(6, 182, 212, 0.65);
+        }
+
+        /* ================= TOP GLASS HEADER ================= */
+        .top-bar {
+            position: sticky;
+            top: 12px;
+            z-index: 100;
+            max-width: 1040px;
+            margin: 12px auto 24px auto;
+            padding: 12px 20px;
+            background: rgba(11, 17, 32, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: -0.3px;
+            color: #fff;
+        }
+
+        .brand-icon-box {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(6, 182, 212, 0.25));
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .desktop-nav {
+            display: flex;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 5px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-tab {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .nav-tab:hover {
+            color: #fff;
+        }
+
+        .nav-tab.active {
+            background: rgba(16, 185, 129, 0.16);
+            color: var(--accent-emerald);
+            box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.35);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .icon-pill-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            color: #e2e8f0;
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .icon-pill-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ================= MOBILE BOTTOM DOCK NAVIGATION ================= */
+        .mobile-dock {
+            display: none;
+            position: fixed;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 28px);
+            max-width: 440px;
+            background: rgba(11, 17, 32, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 22px;
+            padding: 8px;
+            z-index: 999;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65);
+            justify-content: space-around;
+        }
+
+        .dock-item {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
+            border-radius: 14px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            flex: 1;
+        }
+
+        .dock-item span.dock-ico {
+            font-size: 18px;
+            transition: transform 0.25s ease;
+        }
+
+        .dock-item.active {
+            color: var(--accent-emerald);
+            background: rgba(16, 185, 129, 0.14);
+        }
+
+        .dock-item.active span.dock-ico {
+            transform: translateY(-2px) scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .desktop-nav { display: none; }
+            .mobile-dock { display: flex; }
+            .top-bar { margin: 10px 14px 18px 14px; padding: 10px 14px; }
+        }
+
+        /* ================= MAIN CONTAINER & TAB VIEWS ================= */
+        .main-wrapper {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .view-section {
+            display: none;
+            animation: viewFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        @keyframes viewFadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Header */
+        .sec-header {
+            margin-bottom: 22px;
+        }
+
+        .sec-tag {
+            color: var(--accent-cyan);
+            font-size: 11.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .sec-title {
+            font-size: clamp(22px, 4vw, 30px);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+
+        /* ================= GLASS CARDS & TELEMETRY ================= */
+        .glass-panel {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: border-color 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(255, 255, 255, 0.16);
+        }
+
+        .telemetry-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .telemetry-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .metric-card {
+            background: rgba(6, 9, 19, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 18px;
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--border-glow);
+        }
+
+        .metric-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 8px;
+        }
+
+        .metric-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .metric-sub {
+            font-size: 11px;
+            color: var(--accent-emerald);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        /* Interactive Digital Twin Visualizer */
+        .twin-stage {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 18px;
+            align-items: center;
+            background: rgba(3, 6, 14, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 720px) {
+            .twin-stage { grid-template-columns: 1fr; }
+        }
+
+        .hardware-visual {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 16px;
+            background: radial-gradient(circle at center, rgba(16, 185, 129, 0.08), transparent 70%);
+            border-radius: 16px;
+        }
+
+        .node-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .node-circle {
+            width: 74px;
+            height: 74px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            transition: all 0.4s ease;
+        }
+
+        .bulb-active {
+            background: rgba(245, 158, 11, 0.18);
+            border-color: rgba(245, 158, 11, 0.6);
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.45);
+            transform: scale(1.08);
+        }
+
+        .energy-stream {
+            height: 3px;
+            flex-grow: 1;
+            margin: 0 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .energy-stream.flowing::after {
+            content: "";
+            position: absolute;
+            top: 0; left: -50%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-emerald), var(--accent-cyan), transparent);
+            animation: flowPulse 1.2s linear infinite;
+        }
+
+        @keyframes flowPulse {
+            100% { left: 150%; }
+        }
+
+        .node-caption {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Luxury Range Slider */
+        .control-deck {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .slider-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slider-top span {
+            font-size: 13px;
+            font-weight: 700;
+            color: #e2e8f0;
+        }
+
+        .speed-badge {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(6, 182, 212, 0.35);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 99px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-emerald), var(--accent-cyan));
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.8);
+            border: 2px solid #fff;
+        }
+
+        /* Environment Chips List */
+        .env-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .env-chip {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            color: #cbd5e1;
+            padding: 9px 14px;
+            border-radius: 12px;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            flex: 1 1 auto;
+            text-align: center;
+        }
+
+        .env-chip:hover, .env-chip.active-env {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: var(--accent-emerald);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .status-banner {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: #a7f3d0;
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ================= LUXURY INTERACTIVE LISTS (STORY & STEPS) ================= */
+        .luxury-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .list-item-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 18px;
+            border-radius: 18px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .list-item-card::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--accent-emerald), var(--accent-cyan));
+            opacity: 0.4;
+            transition: opacity 0.3s ease, width 0.3s ease;
+        }
+
+        .list-item-card:hover {
+            transform: translateX(6px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(16, 185, 129, 0.35);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .list-item-card:hover::before {
+            opacity: 1;
+            width: 6px;
+        }
+
+        .list-icon-badge {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .list-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .list-content p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ================= 3D JUDGES FLASHCARD ================= */
+        .flashcard-wrapper {
+            perspective: 1400px;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .pro-flashcard {
+            width: 100%;
+            min-height: 250px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .pro-flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-side {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 24px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .side-front {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.95));
+            border: 1px solid rgba(6, 182, 212, 0.35);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+        }
+
+        .side-back {
+            background: linear-gradient(145deg, rgba(6, 78, 59, 0.9), rgba(15, 23, 42, 0.95));
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            transform: rotateY(180deg);
+            box-shadow: 0 20px 45px rgba(16, 185, 129, 0.2);
+        }
+
+        .q-pill {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            padding: 5px 14px;
+            border-radius: 99px;
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+            margin-bottom: 16px;
+        }
+
+        .side-back .q-pill {
+            background: rgba(16, 185, 129, 0.2);
+            color: #6ee7b7;
+        }
+
+        .card-q-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.4;
+            margin-bottom: 18px;
+        }
+
+        .card-a-body {
+            font-size: 15.5px;
+            color: #e2e8f0;
+            line-height: 1.65;
+            margin-bottom: 18px;
+        }
+
+        .flip-hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.06);
+            padding: 6px 14px;
+            border-radius: 99px;
+        }
+
+        .card-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .ctrl-btn {
+            flex: 1;
+            max-width: 180px;
+            padding: 13px 20px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #fff;
+            font-weight: 700;
+            font-size: 13.5px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .ctrl-btn:hover {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: var(--accent-emerald);
+        }
+
+        /* ================= AI CHATBOT UI ================= */
+        .chat-window {
+            height: 240px;
+            overflow-y: auto;
+            padding: 14px;
+            background: rgba(3, 6, 14, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .bubble {
+            max-width: 82%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 13.5px;
+            line-height: 1.5;
+            animation: popMsg 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes popMsg {
+            from { opacity: 0; transform: translateY(10px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .bubble.bot {
+            align-self: flex-start;
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(6, 182, 212, 0.25);
+            color: #f1f5f9;
+            border-bottom-left-radius: 4px;
+        }
+
+        .bubble.user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, var(--accent-emerald), #059669);
+            color: #03050a;
+            font-weight: 600;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-input-bar {
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 6px;
+            border-radius: 16px;
+            margin-top: 12px;
+        }
+
+        .chat-input-bar input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #fff;
+            padding: 8px 12px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .chat-send-btn {
+            background: var(--accent-emerald);
+            color: #03050a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        /* ================= GALLERY VIEW ================= */
+        .gallery-frame {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #03050a;
+        }
+
+        .gallery-frame img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        @media (max-width: 600px) {
+            .gallery-frame img { height: 240px; }
+        }
+
+        .gallery-overlay-bar {
+            padding: 16px 20px;
+            background: rgba(11, 17, 32, 0.9);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* Spin Classes */
+        .spin-s { animation: spinCW 1.4s linear infinite; }
+        .spin-m { animation: spinCW 0.65s linear infinite; }
+        .spin-f { animation: spinCW 0.25s linear infinite; }
     </style>
 </head>
 <body>
 
-<!-- Cinematic Intro -->
-<div class="cinematic-intro" id="cinematicIntro">
-    <div class="intro-logo">💡🌀</div>
-    <div class="intro-title">Windy's Bulb System</div>
-    <div class="intro-sub">Created by Yazan (Class 4Q) | Supervised by Mr. Modather</div>
-    <button class="intro-enter-btn" onclick="enterApp()">Launch Digital Twin 🚀</button>
-</div>
+<div class="tech-grid-bg"></div>
 
-<!-- Navigation Bar -->
-<div class="navbar">
-    <a href="index.html" class="nav-brand"><span>💡</span> Windy's Bulb</a>
-    <div class="nav-links">
-        <a href="index.html" class="active">Home & Simulator</a>
-        <a href="story.html">Project Story</a>
-        <a href="judges.html">Judges Q&A</a>
-        <a href="gallery.html">Gallery & Steps</a>
+<!-- ================= CINEMATIC LUXURY INTRO ================= -->
+<div class="intro-screen" id="introScreen">
+    <div class="turbine-core-stage">
+        <div class="orbit-ring orbit-1"></div>
+        <div class="orbit-ring orbit-2"></div>
+        <div class="orbit-glow"></div>
+        <svg class="hero-rotor-svg" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="7" fill="#06b6d4"/>
+            <path d="M50 43 C46 20, 48 5, 50 2 C52 5, 54 20, 50 43 Z" fill="#10b981"/>
+            <path d="M56 54 C76 65, 88 73, 91 76 C87 77, 73 70, 54 58 Z" fill="#10b981"/>
+            <path d="M44 54 C24 65, 12 73, 9 76 C13 77, 27 70, 46 58 Z" fill="#10b981"/>
+        </svg>
     </div>
+
+    <div class="intro-pill">● Clean Tech Digital Twin</div>
+    <h1 class="intro-title">Windy's Bulb</h1>
+    <p class="intro-meta">
+        Next-Generation Wind Energy Simulation & AI Telemetry.<br>
+        Engineered by <strong>Yazan (Class 4Q)</strong> • Supervised by <strong>Mr. Modather</strong>
+    </p>
+    <button class="luxury-btn" onclick="launchApp()">
+        <span>Initialize System</span>
+        <span>⚡</span>
+    </button>
 </div>
 
-<!-- Main Content -->
-<div class="container">
-    <h2 style="color: #1b5e20; margin-top: 0;">📊 Live Digital Twin & Engineering Telemetry</h2>
-    <p style="font-size: 13.5px; color: #555;">Test wind speeds, observe live voltage generation, and monitor the smart backup battery system in real time.</p>
+<!-- ================= TOP GLASS BAR ================= -->
+<header class="top-bar">
+    <div class="brand-logo">
+        <div class="brand-icon-box">💡</div>
+        <span>Windy's Bulb</span>
+    </div>
 
-    <div class="simulator-box">
-        <div class="telemetry-grid">
-            <div class="tele-card"><div class="tele-label">Wind Speed</div><div class="tele-value" id="teleSpeed">0 km/h</div></div>
-            <div class="tele-card"><div class="tele-label">Voltage Output</div><div class="tele-value" id="teleVoltage">0.0 V</div></div>
-            <div class="tele-card"><div class="tele-label">Power Output</div><div class="tele-value" id="telePower">0.0 W</div></div>
-            <div class="tele-card"><div class="tele-label">Backup Battery</div><div class="tele-value" id="teleBattery" style="color: #2e7d32;">100%</div></div>
+    <nav class="desktop-nav">
+        <button class="nav-tab active" onclick="switchView('simulator', this)">Digital Twin & AI</button>
+        <button class="nav-tab" onclick="switchView('story', this)">Engineering Story</button>
+        <button class="nav-tab" onclick="switchView('judges', this)">Judges Q&A</button>
+        <button class="nav-tab" onclick="switchView('gallery', this)">Build & Gallery</button>
+    </nav>
+
+    <div class="header-actions">
+        <button class="icon-pill-btn" id="voiceToggle" onclick="toggleVoice()">🔊 Voice: ON</button>
+        <button class="icon-pill-btn" onclick="replayIntro()">▶ Intro</button>
+    </div>
+</header>
+
+<!-- ================= FLOATING MOBILE DOCK ================= -->
+<nav class="mobile-dock">
+    <button class="dock-item active" onclick="switchView('simulator', this)">
+        <span class="dock-ico">⚡</span>
+        <span>Twin & AI</span>
+    </button>
+    <button class="dock-item" onclick="switchView('story', this)">
+        <span class="dock-ico">📖</span>
+        <span>Story</span>
+    </button>
+    <button class="dock-item" onclick="switchView('judges', this)">
+        <span class="dock-ico">📋</span>
+        <span>Judges</span>
+    </button>
+    <button class="dock-item" onclick="switchView('gallery', this)">
+        <span class="dock-ico">📸</span>
+        <span>Gallery</span>
+    </button>
+</nav>
+
+<!-- ================= MAIN CONTENT VIEWS ================= -->
+<main class="main-wrapper">
+
+    <!-- VIEW 1: DIGITAL TWIN & AI ASSISTANT -->
+    <section id="view-simulator" class="view-section active">
+        <div class="sec-header">
+            <span class="sec-tag">Real-Time Telemetry</span>
+            <h2 class="sec-title">Wind Energy Digital Twin</h2>
         </div>
 
-        <div class="slider-box">
-            <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 13px; color: #0d47a1; margin-bottom: 6px;">
-                <span>🎚️ Manual Wind Speed Control:</span><span id="sliderVal">0 km/h</span>
+        <div class="glass-panel">
+            <!-- Telemetry Metrics -->
+            <div class="telemetry-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Wind Velocity</div>
+                    <div class="metric-val" id="mSpeed">0 km/h</div>
+                    <div class="metric-sub" id="mWindState">Calm Airflow</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">DC Output</div>
+                    <div class="metric-val" id="mVolt">0.0 V</div>
+                    <div class="metric-sub">Regulated Bus</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Active Power</div>
+                    <div class="metric-val" id="mWatt">0.0 W</div>
+                    <div class="metric-sub">Clean Generation</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Smart Battery</div>
+                    <div class="metric-val" id="mBat" style="color: var(--accent-emerald);">100%</div>
+                    <div class="metric-sub" id="mBatMode">Standby Ready</div>
+                </div>
             </div>
-            <input type="range" min="0" max="100" value="0" class="custom-slider" id="windSlider" oninput="changeWind(this.value)">
+
+            <!-- Twin Stage -->
+            <div class="twin-stage">
+                <div class="hardware-visual">
+                    <div class="node-box">
+                        <div class="node-circle" id="rotorNode">🌀</div>
+                        <span class="node-caption">Turbine</span>
+                    </div>
+                    <div class="energy-stream" id="powerStream"></div>
+                    <div class="node-box">
+                        <div class="node-circle" id="batNode">🔋</div>
+                        <span class="node-caption">Storage</span>
+                    </div>
+                    <div class="energy-stream flowing" id="bulbStream"></div>
+                    <div class="node-box">
+                        <div class="node-circle bulb-active" id="bulbNode">💡</div>
+                        <span class="node-caption">LED Load</span>
+                    </div>
+                </div>
+
+                <div class="control-deck">
+                    <div class="slider-top">
+                        <span>Adjust Wind Speed</span>
+                        <span class="speed-badge" id="sliderBadge">0 km/h</span>
+                    </div>
+                    <input type="range" min="0" max="100" value="0" id="windRange" oninput="updateTwin(this.value)">
+                    
+                    <div class="env-pills">
+                        <button class="env-chip" onclick="applyPreset(88, this)">🏔️ Mountain</button>
+                        <button class="env-chip" onclick="applyPreset(65, this)">🏖️ Coast</button>
+                        <button class="env-chip" onclick="applyPreset(42, this)">🌾 Valley</button>
+                        <button class="env-chip" onclick="applyPreset(18, this)">🏢 City</button>
+                        <button class="env-chip active-env" onclick="applyPreset(0, this)">🏠 Indoor</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status-banner" id="twinBanner">
+                <span>🔋</span>
+                <span>Zero wind detected: Smart Backup Battery automatically engaged to keep the LED illuminated.</span>
+            </div>
         </div>
 
-        <div class="visual-stage">
-            <div style="text-align: center;"><div style="font-size:10px; font-weight:bold; color:#777;">TURBINE</div><div class="turbine spin-stop" id="turbine">🌀</div></div>
-            <div style="text-align: center;"><div style="font-size:10px; font-weight:bold; color:#777;">FLOW</div><div style="font-size: 20px;">⚡➡️</div></div>
-            <div style="text-align: center;"><div style="font-size:10px; font-weight:bold; color:#777;">BATTERY</div><div style="font-size: 32px;" id="batIcon">🔋</div></div>
-            <div style="text-align: center;"><div style="font-size:10px; font-weight:bold; color:#777;">BULB</div><div class="bulb" id="bulb">💡</div></div>
+        <!-- AI Voice Chatbot Panel -->
+        <div class="glass-panel">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <div>
+                    <span class="sec-tag" style="margin-bottom: 2px;">Neural Voice Engine</span>
+                    <h3 style="font-size: 18px; font-weight: 800;">Windy AI Assistant</h3>
+                </div>
+                <span style="font-size: 11px; color: var(--accent-emerald); background: rgba(16,185,129,0.12); padding: 5px 12px; border-radius: 99px; font-weight: 700;">● ONLINE</span>
+            </div>
+
+            <div class="chat-window" id="chatHistory">
+                <div class="bubble bot">Welcome Judges! Tap any question below or type your own to hear and read the engineering explanation.</div>
+            </div>
+
+            <div class="env-pills">
+                <button class="env-chip" onclick="triggerAI('How does wind light the bulb?')">💡 How it works</button>
+                <button class="env-chip" onclick="triggerAI('What happens when wind stops?')">🔋 Backup Battery</button>
+                <button class="env-chip" onclick="triggerAI('Why use 3 turbine blades?')">🌀 3-Blade Physics</button>
+                <button class="env-chip" onclick="triggerAI('Wind energy in Saudi Arabia?')">🇸🇦 Saudi Vision</button>
+            </div>
+
+            <div class="chat-input-bar">
+                <input type="text" id="aiQueryInput" placeholder="Ask a technical question..." onkeypress="if(event.key==='Enter') submitCustomAI()">
+                <button class="chat-send-btn" onclick="submitCustomAI()">Ask ➤</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIEW 2: ENGINEERING STORY (LUXURY INTERACTIVE LISTS) -->
+    <section id="view-story" class="view-section">
+        <div class="sec-header">
+            <span class="sec-tag">Architecture & Concept</span>
+            <h2 class="sec-title">The Engineering Story</h2>
         </div>
 
-        <div class="presets">
-            <button class="preset-btn" onclick="setPreset(85)">🏔️ Mountain (85km)</button>
-            <button class="preset-btn" onclick="setPreset(65)">🏖️ Beach (65km)</button>
-            <button class="preset-btn" onclick="setPreset(40)">🌾 Farm (40km)</button>
-            <button class="preset-btn" onclick="setPreset(15)">🏢 City (15km)</button>
-            <button class="preset-btn" onclick="setPreset(0)">🏠 Indoor (0km)</button>
+        <div class="glass-panel">
+            <div class="luxury-list">
+                <div class="list-item-card">
+                    <div class="list-icon-badge" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4);">⚡</div>
+                    <div class="list-content">
+                        <h4>1. The Core Engineering Problem</h4>
+                        <p>Natural wind speeds fluctuate continuously throughout the day. When airflow drops during calm weather, standard wind turbines lose voltage, causing connected lights to flicker or shut down completely.</p>
+                    </div>
+                </div>
+
+                <div class="list-item-card">
+                    <div class="list-icon-badge">🧠</div>
+                    <div class="list-content">
+                        <h4>2. The Digital Twin & Hybrid Solution</h4>
+                        <p><strong>Windy's Bulb</strong> bridges physical hardware with a real-time Digital Twin simulator. Excess energy generated during high winds is stored in a smart backup battery that engages instantaneously when wind stops—guaranteeing 24/7 illumination.</p>
+                    </div>
+                </div>
+
+                <div class="list-item-card">
+                    <div class="list-icon-badge" style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.4);">🌙</div>
+                    <div class="list-content">
+                        <h4>3. Wind Power vs. Solar Panels</h4>
+                        <p>Solar panels rely strictly on daytime sunlight and produce zero energy after sunset. Wind turbines operate day and night, making wind energy an essential 24-hour clean power source.</p>
+                    </div>
+                </div>
+
+                <div class="list-item-card">
+                    <div class="list-icon-badge">🇸🇦</div>
+                    <div class="list-content">
+                        <h4>4. Real-World Impact in Saudi Arabia</h4>
+                        <p>Inspired by Saudi Arabia's clean energy transformation—such as the massive <strong>Dumat Al Jandal Wind Farm</strong> powering over 70,000 homes—this project demonstrates scalable renewable engineering for future smart cities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIEW 3: JUDGES Q&A (3D INTERACTIVE CARDS) -->
+    <section id="view-judges" class="view-section">
+        <div class="sec-header">
+            <span class="sec-tag">Interactive Evaluation</span>
+            <h2 class="sec-title">Judges' Q&A Deck</h2>
         </div>
 
-        <div class="status-msg" id="statusMsg">System ready. Adjust slider or select environment!</div>
-    </div>
-</div>
+        <div class="glass-panel">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+                <span style="font-size: 13px; color: var(--text-muted);">Tap card to flip in 3D</span>
+                <span class="speed-badge" id="cardCounterBadge">1 / 7</span>
+            </div>
+
+            <div class="flashcard-wrapper">
+                <div class="pro-flashcard" id="judgeCard" onclick="flipCard()">
+                    <div class="card-side side-front">
+                        <span class="q-pill" id="cardCat">Core Mission</span>
+                        <h3 class="card-q-title" id="cardQ">1. Why is this project important?</h3>
+                        <span class="flip-hint">🔄 Tap to Reveal Official Answer</span>
+                    </div>
+                    <div class="card-side side-back">
+                        <span class="q-pill">Verified Answer</span>
+                        <p class="card-a-body" id="cardA">Wind energy is 100% renewable and produces zero greenhouse emissions, helping protect our planet while delivering reliable electricity.</p>
+                        <span class="flip-hint">🔄 Tap to Return to Question</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-controls">
+                <button class="ctrl-btn" onclick="prevQ()">❮ Previous</button>
+                <button class="ctrl-btn" onclick="nextQ()">Next ❯</button>
+            </div>
+        </div>
+
+        <!-- Judge Rating Box -->
+        <div class="glass-panel" style="text-align: center;">
+            <span class="sec-tag">Exhibition Score</span>
+            <h3 style="font-size: 18px; margin-bottom: 10px;">Rate Yazan's Project</h3>
+            <div style="font-size: 26px; letter-spacing: 6px; margin-bottom: 14px; cursor: pointer;">⭐⭐⭐⭐⭐</div>
+            <button class="luxury-btn" style="padding: 11px 28px; font-size: 13.5px;" onclick="document.getElementById('scoreConfirm').innerText='✅ Official Judge Rating Recorded! Thank you!'">
+                Submit Evaluation 🏆
+            </button>
+            <p id="scoreConfirm" style="color: var(--accent-emerald); font-size: 13px; font-weight: 700; margin-top: 12px;"></p>
+        </div>
+    </section>
+
+    <!-- VIEW 4: GALLERY & BUILD STEPS -->
+    <section id="view-gallery" class="view-section">
+        <div class="sec-header">
+            <span class="sec-tag">Hardware & Assembly</span>
+            <h2 class="sec-title">Build Process & Gallery</h2>
+        </div>
+
+        <div class="glass-panel">
+            <div class="gallery-frame">
+                <img id="galPhoto" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1000" alt="Wind Turbine Project">
+                <div class="gallery-overlay-bar">
+                    <span id="galTitle" style="font-weight: 700; font-size: 14px; color: #fff;">01. Physical Wind Turbine Assembly</span>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="icon-pill-btn" onclick="prevPhoto()">❮ Prev</button>
+                        <button class="icon-pill-btn" onclick="nextPhoto()">Next ❯</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-panel">
+            <h3 style="font-size: 17px; margin-bottom: 14px; color: #fff;">🛠️ Engineering Build Steps</h3>
+            <div class="luxury-list">
+                <div class="list-item-card">
+                    <div class="list-icon-badge">01</div>
+                    <div class="list-content">
+                        <h4>Turbine Structure & Aerodynamic Rotor</h4>
+                        <p>Assembled the tower mast and balanced the 3-blade rotor hub for low-friction rotation.</p>
+                    </div>
+                </div>
+                <div class="list-item-card">
+                    <div class="list-icon-badge">02</div>
+                    <div class="list-content">
+                        <h4>DC Generator & LED Circuit Wiring</h4>
+                        <p>Connected the internal DC motor terminals securely to the high-efficiency LED bulb load.</p>
+                    </div>
+                </div>
+                <div class="list-item-card">
+                    <div class="list-icon-badge">03</div>
+                    <div class="list-content">
+                        <h4>Controlled Airflow & Voltage Testing</h4>
+                        <p>Simulated wind speeds using an external fan and verified steady DC voltage output.</p>
+                    </div>
+                </div>
+                <div class="list-item-card">
+                    <div class="list-icon-badge">04</div>
+                    <div class="list-content">
+                        <h4>Digital Twin Software Engineering</h4>
+                        <p>Developed this interactive telemetry dashboard and voice-assisted Q&A platform.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
 
 <script>
-    function enterApp() {
-        document.getElementById("cinematicIntro").classList.add("hidden");
+    // Intro Controls
+    function launchApp() {
+        document.getElementById('introScreen').classList.add('hidden');
+        playTone(520, 0.12);
     }
 
-    function changeWind(val) {
-        let speed = parseInt(val);
-        document.getElementById("sliderVal").innerText = speed + " km/h";
-        document.getElementById("teleSpeed").innerText = speed + " km/h";
+    function replayIntro() {
+        document.getElementById('introScreen').classList.remove('hidden');
+    }
+
+    // Navigation View Switcher (Syncs Desktop Tabs & Mobile Bottom Dock)
+    function switchView(viewName, clickedBtn) {
+        document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+        document.getElementById('view-' + viewName).classList.add('active');
+
+        document.querySelectorAll('.nav-tab, .dock-item').forEach(btn => btn.classList.remove('active'));
         
-        let voltage = (speed * 0.05).toFixed(1);
-        let power = (speed * speed * 0.002).toFixed(1);
-        document.getElementById("teleVoltage").innerText = voltage + " V";
-        document.getElementById("telePower").innerText = power + " W";
+        // Highlight matching buttons in both desktop and mobile navs
+        const indexMap = { 'simulator': 0, 'story': 1, 'judges': 2, 'gallery': 3 };
+        const idx = indexMap[viewName];
+        document.querySelectorAll('.nav-tab')[idx].classList.add('active');
+        document.querySelectorAll('.dock-item')[idx].classList.add('active');
 
-        let turbine = document.getElementById("turbine");
-        let bulb = document.getElementById("bulb");
-        let bat = document.getElementById("teleBattery");
-        let batIcon = document.getElementById("batIcon");
-        let msg = document.getElementById("statusMsg");
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        playTone(440, 0.06);
+    }
 
-        turbine.className = "turbine ";
-        bulb.className = "bulb ";
+    // Audio & Voice Synthesis
+    let voiceEnabled = true;
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function toggleVoice() {
+        voiceEnabled = !voiceEnabled;
+        document.getElementById('voiceToggle').innerText = voiceEnabled ? '🔊 Voice: ON' : '🔇 Voice: OFF';
+        if (!voiceEnabled && 'speechSynthesis' in window) window.speechSynthesis.cancel();
+    }
+
+    function playTone(freq, dur) {
+        if (!voiceEnabled) return;
+        try {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = freq;
+            gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + dur);
+        } catch (e) {}
+    }
+
+    function speakAnswer(text) {
+        if (!voiceEnabled || !('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel();
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.lang = 'en-US';
+        msg.rate = 1.02;
+        window.speechSynthesis.speak(msg);
+    }
+
+    // Digital Twin Simulation Logic
+    function applyPreset(speed, btn) {
+        document.querySelectorAll('.env-chip').forEach(c => c.classList.remove('active-env'));
+        if (btn) btn.classList.add('active-env');
+        document.getElementById('windRange').value = speed;
+        updateTwin(speed);
+        playTone(300 + speed * 4, 0.1);
+    }
+
+    function updateTwin(val) {
+        const speed = parseInt(val);
+        document.getElementById('sliderBadge').innerText = speed + ' km/h';
+        document.getElementById('mSpeed').innerText = speed + ' km/h';
+        document.getElementById('mVolt').innerText = (speed * 0.05).toFixed(1) + ' V';
+        document.getElementById('mWatt').innerText = (speed * speed * 0.002).toFixed(1) + ' W';
+
+        const rotor = document.getElementById('rotorNode');
+        const pStream = document.getElementById('powerStream');
+        const batVal = document.getElementById('mBat');
+        const batMode = document.getElementById('mBatMode');
+        const windState = document.getElementById('mWindState');
+        const banner = document.getElementById('twinBanner');
+
+        rotor.className = 'node-circle ';
 
         if (speed >= 70) {
-            turbine.classList.add("spin-fast");
-            bulb.classList.add("bulb-on");
-            bat.innerText = "100% (Charging)";
-            batIcon.innerText = "🔋⚡";
-            msg.innerText = "✨ Maximum power! High wind generation & battery charging.";
-        } else if (speed >= 30) {
-            turbine.classList.add("spin-med");
-            bulb.classList.add("bulb-on");
-            bat.innerText = "85% (Stable)";
-            batIcon.innerText = "🔋";
-            msg.innerText = "🌾 Moderate wind speed providing stable clean electricity.";
+            rotor.classList.add('spin-f');
+            pStream.classList.add('flowing');
+            windState.innerText = 'High Velocity Gale';
+            batVal.innerText = '100%';
+            batVal.style.color = 'var(--accent-emerald)';
+            batMode.innerText = 'Peak Charging ⚡';
+            banner.innerHTML = '<span>⚡</span><span>Peak Turbine Output: Generating maximum clean power & charging storage bank!</span>';
+        } else if (speed >= 35) {
+            rotor.classList.add('spin-m');
+            pStream.classList.add('flowing');
+            windState.innerText = 'Optimal Breeze';
+            batVal.innerText = '88%';
+            batVal.style.color = 'var(--accent-emerald)';
+            batMode.innerText = 'Balanced Grid';
+            banner.innerHTML = '<span>✨</span><span>Optimal Operation: Steady wind speed sustaining full LED illumination.</span>';
         } else if (speed > 0) {
-            turbine.classList.add("spin-slow");
-            bulb.classList.add("bulb-on");
-            bat.innerText = "50% (Discharging)";
-            batIcon.innerText = "🔋";
-            msg.innerText = "⚠️ Low wind speed. Battery assisting power output.";
+            rotor.classList.add('spin-s');
+            pStream.classList.add('flowing');
+            windState.innerText = 'Light Airflow';
+            batVal.innerText = '54%';
+            batVal.style.color = 'var(--accent-amber)';
+            batMode.innerText = 'Hybrid Assist';
+            banner.innerHTML = '<span>⚠️</span><span>Low Wind Mode: Battery assisting turbine to prevent LED dimming.</span>';
         } else {
-            turbine.classList.add("spin-stop");
-            bulb.classList.add("bulb-on");
-            bat.innerText = "15% (Backup Mode)";
-            batIcon.innerText = "🪫";
-            msg.innerText = "🔋 Wind stopped! Smart Backup Battery engaged automatically to keep the bulb glowing!";
+            pStream.classList.remove('flowing');
+            windState.innerText = 'Zero Airflow';
+            batVal.innerText = '22%';
+            batVal.style.color = 'var(--accent-cyan)';
+            batMode.innerText = 'Backup Active 🔋';
+            banner.innerHTML = '<span>🔋</span><span>Zero wind detected: Smart Backup Battery automatically engaged to keep the LED illuminated.</span>';
         }
     }
 
-    function setPreset(val) {
-        document.getElementById("windSlider").value = val;
-        changeWind(val);
+    // AI Chatbot Logic
+    function triggerAI(question) {
+        const box = document.getElementById('chatHistory');
+        box.innerHTML += `<div class="bubble user">${question}</div>`;
+        
+        const q = question.toLowerCase();
+        let reply = "Wind turbines convert kinetic energy from moving air into clean electrical energy to light the LED bulb!";
+        
+        if (q.includes('work') || q.includes('light')) {
+            reply = "Moving air rotates the aerodynamic blades, spinning the internal DC generator to convert kinetic energy into clean electricity that lights the LED!";
+        } else if (q.includes('stop') || q.includes('battery')) {
+            reply = "Excess electricity generated during windy periods is stored in our smart backup battery, which automatically powers the bulb when the wind stops!";
+        } else if (q.includes('3') || q.includes('blade')) {
+            reply = "Three blades offer the ideal aerodynamic balance between rotational stability, low weight, and maximum wind energy capture!";
+        } else if (q.includes('saudi')) {
+            reply = "Saudi Arabia leads regional wind innovation with the Dumat Al Jandal Wind Farm, generating clean electricity for over 70,000 homes!";
+        }
+
+        setTimeout(() => {
+            box.innerHTML += `<div class="bubble bot">${reply}</div>`;
+            box.scrollTop = box.scrollHeight;
+            speakAnswer(reply);
+        }, 300);
+    }
+
+    function submitCustomAI() {
+        const inp = document.getElementById('aiQueryInput');
+        if (!inp.value.trim()) return;
+        triggerAI(inp.value.trim());
+        inp.value = '';
+    }
+
+    // Judges 3D Flashcards
+    const judgesDeck = [
+        { cat: "Core Mission", q: "1. Why is this project important?", a: "Wind energy is 100% renewable and produces zero greenhouse emissions, helping protect our planet while delivering reliable electricity." },
+        { cat: "Hardware & Parts", q: "2. What materials were needed?", a: "An Amazon wind turbine model kit, a DC generator motor, copper connecting wires, an LED light bulb, and an external desk fan." },
+        { cat: "Engineering Steps", q: "3. How was the model built?", a: "Assembled the turbine tower and 3 blades, wired the DC motor to the LED terminal, and calibrated airflow using a fan." },
+        { cat: "AI & Digital Twin", q: "4. How did you integrate AI?", a: "Built a real-time Digital Twin telemetry simulator and a voice-enabled AI Assistant to answer technical questions." },
+        { cat: "Problem Solving", q: "5. What was your biggest challenge?", a: "Balancing the rotor blades and finding the optimal fan angle to maintain steady DC voltage without LED flickering." },
+        { cat: "Future Scaling", q: "6. How can this scale to real cities?", a: "By integrating high-capacity lithium battery banks and IoT wind-direction sensors that automatically face the wind." },
+        { cat: "Clean Tech", q: "7. Why wind power instead of solar?", a: "Wind blows day and night, whereas solar panels only generate electricity during sunny daytime hours." }
+    ];
+
+    let qIdx = 0;
+    function flipCard() {
+        document.getElementById('judgeCard').classList.toggle('flipped');
+        playTone(480, 0.07);
+    }
+    function renderCard() {
+        const card = document.getElementById('judgeCard');
+        card.classList.remove('flipped');
+        setTimeout(() => {
+            const item = judgesDeck[qIdx];
+            document.getElementById('cardCounterBadge').innerText = `${qIdx + 1} / ${judgesDeck.length}`;
+            document.getElementById('cardCat').innerText = item.cat;
+            document.getElementById('cardQ').innerText = item.q;
+            document.getElementById('cardA').innerText = item.a;
+        }, 160);
+    }
+    function nextQ() { qIdx = (qIdx + 1) % judgesDeck.length; renderCard(); playTone(520, 0.06); }
+    function prevQ() { qIdx = (qIdx - 1 + judgesDeck.length) % judgesDeck.length; renderCard(); playTone(420, 0.06); }
+
+    // Gallery Switcher
+    const photos = [
+        { url: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1000", title: "01. Physical Wind Turbine Assembly" },
+        { url: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=1000", title: "02. Aerodynamic Airflow & Rotor Testing" },
+        { url: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1000", title: "03. Live LED Illumination Output" }
+    ];
+    let pIdx = 0;
+    function nextPhoto() {
+        pIdx = (pIdx + 1) % photos.length;
+        updatePhoto();
+    }
+    function prevPhoto() {
+        pIdx = (pIdx - 1 + photos.length) % photos.length;
+        updatePhoto();
+    }
+    function updatePhoto() {
+        const img = document.getElementById('galPhoto');
+        img.style.opacity = 0;
+        setTimeout(() => {
+            img.src = photos[pIdx].url;
+            document.getElementById('galTitle').innerText = photos[pIdx].title;
+            img.style.opacity = 1;
+        }, 180);
+        playTone(500, 0.06);
     }
 </script>
 </body>
