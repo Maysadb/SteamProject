@@ -425,6 +425,12 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .env-card-item:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .env-card-item span.env-icon { font-size: 24px; }
@@ -587,25 +593,6 @@
             <h2 class="sec-title">Wind Energy Digital Twin</h2>
         </div>
 
-        <div class="glass-panel">
-            <div class="telemetry-grid">
-                <div class="metric-card">
-                    <div class="metric-label">DC Output</div>
-                    <div class="metric-val" id="mVolt">0.0 V</div>
-                    <div class="metric-sub">Regulated Bus</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-label">Active Power</div>
-                    <div class="metric-val" id="mWatt">0.0 W</div>
-                    <div class="metric-sub">Clean Generation</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-label">Smart Battery</div>
-                    <div class="metric-val" id="mBat" style="color: var(--accent-emerald);">100%</div>
-                    <div class="metric-sub" id="mBatMode">Standby Ready</div>
-                </div>
-            </div>
-
             <div class="twin-stage">
                 <div class="hardware-visual">
                     <div class="node-box">
@@ -634,27 +621,27 @@
                     <div class="env-cards-grid">
                         <div class="env-card-item" data-speed="88">
                             <span class="env-icon">🏔️</span>
-                            <span class="env-name">قمة الجبل</span>
+                            <span class="env-name">Mountain Peak</span>
                             <span class="env-speed">88 km/h</span>
                         </div>
                         <div class="env-card-item" data-speed="65">
                             <span class="env-icon">🏖️</span>
-                            <span class="env-name">الساحل المفتوح</span>
+                            <span class="env-name">Open Coast</span>
                             <span class="env-speed">65 km/h</span>
                         </div>
                         <div class="env-card-item" data-speed="42">
                             <span class="env-icon">🌾</span>
-                            <span class="env-name">الوادي الأخضر</span>
+                            <span class="env-name">Green Valley</span>
                             <span class="env-speed">42 km/h</span>
                         </div>
                         <div class="env-card-item" data-speed="18">
                             <span class="env-icon">🏢</span>
-                            <span class="env-name">المدينة</span>
+                            <span class="env-name">City Skyline</span>
                             <span class="env-speed">18 km/h</span>
                         </div>
                         <div class="env-card-item active-env" data-speed="0">
                             <span class="env-icon">🏠</span>
-                            <span class="env-name">الغرفة</span>
+                            <span class="env-name">Indoor Room</span>
                             <span class="env-speed">0 km/h</span>
                         </div>
                     </div>
