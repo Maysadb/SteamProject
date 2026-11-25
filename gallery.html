@@ -83,16 +83,17 @@
             margin-bottom: 20px;
         }
 
-        /* تعديل عرض الصور */
+        /* Gallery Images */
         .gallery-img {
             width: 100%;
-            height: 450px;
+            height: 320px;
             object-fit: contain;
             object-position: center;
             display: block;
-            background: #ffffff;
+            background: #e0f2f1;
             border-radius: 12px;
             border: 2px solid #b2dfdb;
+            margin: auto;
         }
 
         .steps-grid {
@@ -125,11 +126,15 @@
 
         @media (max-width: 600px) {
             .gallery-img {
-                height: 350px;
+                height: 260px;
             }
 
             .container {
                 padding: 15px;
+            }
+
+            .gallery-box {
+                padding: 12px;
             }
         }
     </style>
@@ -158,10 +163,12 @@
             📸 Project Photo Gallery
         </h3>
 
-        <img id="galImg"
-             src="IMG_9799.JPG"
-             class="gallery-img"
-             alt="Wind Turbine Project">
+        <img
+            id="galImg"
+            src="IMG_9799.JPG"
+            class="gallery-img"
+            alt="Wind Turbine Project"
+        >
 
         <div id="galCaption"
              style="font-weight: bold; color: #00695c; margin-top: 10px;">
