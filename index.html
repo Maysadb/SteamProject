@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Windy's Bulb - Digital Twin & AI System</title>
+    <title>Windy Bulb - Digital Twin & AI System</title>
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background: linear-gradient(135deg, #e0f7fa, #e8f5e9, #f1f8e9); margin: 0; padding: 12px; color: #333; overflow-x: hidden; }
@@ -157,7 +157,7 @@
 
 <!-- ================= MOBILE-FRIENDLY NAVBAR ================= -->
 <nav class="navbar">
-    <a href="index.html" class="nav-brand"><span>💡</span> Windy's Bulb</a>
+    <a href="index.html" class="nav-brand"><span>💡</span> Windy Bulb</a>
     
     <div class="nav-right-group">
         <button class="nav-action-btn" id="soundBtn" onclick="toggleSound()">🔊</button>
@@ -303,7 +303,7 @@
         let box = document.getElementById("chatBox");
         box.innerHTML += `<div class="msg-row user"><div class="chat-message user-msg">${q}</div></div>`;
         
-        let ans = "Windy's Bulb is a STEM renewable energy model by Yazan that converts wind power into electricity with smart battery backup and a live digital twin.";
+        let ans = "Windy Bulb is a STEM renewable energy model by Yazan that converts wind power into electricity with smart battery backup and a live digital twin.";
         let ql = q.toLowerCase();
 
         if (ql.includes("about") || ql.includes("idea") || ql.includes("project")) {
@@ -317,7 +317,7 @@
         } else if (ql.includes("future") || ql.includes("upgrade") || ql.includes("next")) {
             ans = "In the future, we plan to add a solar panel to create a hybrid wind-solar system, connect real IoT sensors to send live voltage data to this website, and power multiple mini-streetlights.";
         } else if (ql.includes("who") || ql.includes("team") || ql.includes("mentor") || ql.includes("yazan")) {
-            ans = "This project was designed and built by Yazan from Class 4Q, with guidance and supervision from STEM teacher Mr. Modather.";
+            ans = "This project was designed and built by Yazan from Class 4Q, with guidance and supervision from Science teacher Mr. Mudaser Muhtaj.";
         } else if (ql.includes("work") || ql.includes("light")) {
             ans = "Moving air spins the 3 turbine blades, which rotates the DC motor shaft inside to convert kinetic energy into electrical energy that lights up the LED!";
         }
